@@ -51,8 +51,11 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.
 zipalign -v 4 <path-to-same-apk-file> HelloWorld.apk
 ```
 
-### Capacitor issues
+### Cordova issues
+If gradle fails open with ide and build gradle
 
+
+### Capacitor issues
 If there is the following issue when running
 ```
 Manifest merger failed : Attribute application@appComponentFactory value=(android.support.v4.app.CoreComponentFactory) from [com.android.support:support-compat:28.0.0] AndroidManifest.xml:22:18-91
@@ -60,8 +63,17 @@ Manifest merger failed : Attribute application@appComponentFactory value=(androi
 	Suggestion: add 'tools:replace="android:appComponentFactory"' to <application> element at AndroidManifest.xml:5:5-44:19 to override.
 ```
 
-Add this to gradle.properties
+Add this to "src-capacitor\android\gradle.properties"
 ```
 android.useAndroidX=true
 android.enableJetifier=true
+```
+
+If the app crash on startup change this in "src-capacitor\android\app\src\main\AndroidManifest.xml"
+```
+android:name="android.support.v4.content.FileProvider"
+```
+to
+```
+android:name="androidx.core.content.FileProvider"
 ```
