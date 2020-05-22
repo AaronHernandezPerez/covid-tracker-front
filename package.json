@@ -13,6 +13,7 @@
     "vue-i18n-extract": "vue-i18n-extract"
   },
   "dependencies": {
+    "@growthbunker/vueflags": "^0.1.0",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "quasar": "^1.0.0",

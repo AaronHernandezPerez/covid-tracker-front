@@ -1,31 +1,69 @@
 <template>
-  <q-layout class="bg-grey-1">
+  <q-layout>
     <q-header elevated class="text-white" style="background: #24292e" height-hint="61.59">
       <q-toolbar class="q-py-sm q-px-md">
-        <q-btn round dense flat :ripple="false" :icon="fabGithub" size="19px" color="white" class="q-mr-sm" no-caps />
+        <q-btn
+          v-if="$q.screen.lt.md"
+          flat
+          @click="drawerLeft = !drawerLeft"
+          round
+          dense
+          icon="menu"
+        />
+        <q-btn
+          round
+          dense
+          flat
+          :ripple="false"
+          :icon="'fas fa-virus'"
+          size="19px"
+          color="white"
+          class="q-mr-sm"
+          no-caps
+          to="/"
+          exact
+        />
 
-        <div v-if="$q.screen.gt.sm" class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap">
-          <a href="javascript:void(0)" class="text-white">
-            {{$t('tracker')}}
-          </a>
-          <a href="javascript:void(0)" class="text-white">
-            
-          </a>
-          <a href="javascript:void(0)" class="text-white">
-            Marketplace
-          </a>
-          <a href="javascript:void(0)" class="text-white">
-            Explore
-          </a>
+        <div
+          v-if="$q.screen.gt.sm"
+          class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap"
+        >
+          <router-link v-for="menu in menus" v-bind:key="menu.label" :to="menu.route">
+            <a href="menu.route" class="text-white">{{$t(menu.label)}}</a>
+          </router-link>
         </div>
 
         <q-space />
 
         <div class="q-pl-sm q-gutter-sm row items-center no-wrap">
-          <q-btn v-if="$q.screen.gt.xs" dense flat round size="sm" icon="notifications" />
+          <ApplauseBtn />
+
+          <q-btn flat dense size="19px" icon="monetization_on" label="Give me money" />
         </div>
       </q-toolbar>
     </q-header>
+
+    <q-drawer
+      v-model="drawerLeft"
+      :width="200"
+      :breakpoint="500"
+      overlay
+      bordered
+      v-if="$q.screen.lt.md"
+    >
+      <q-scroll-area class="fit">
+        <q-list v-for="(menu, index) in menus" :key="index">
+          <q-item clickable :active="menu.label === 'Outbox'" v-ripple>
+            <q-item-section avatar>
+              <q-icon :name="menu.icon" />
+            </q-item-section>
+            <q-item-section>{{ menu.label }}</q-item-section>
+          </q-item>
+
+          <q-separator v-if="menu.separator" />
+        </q-list>
+      </q-scroll-area>
+    </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -34,92 +72,27 @@
 </template>
 
 <script>
-import { fabGithub } from '@quasar/extras/fontawesome-v5'
-const stringOptions = [
-  'quasarframework/quasar',
-  'quasarframework/quasar-awesome'
-]
+import ApplauseBtn from "src/components/ApplauseBtn";
 export default {
-  name: 'MyLayout',
-  data () {
+  name: "MyLayout",
+  data() {
     return {
-      text: '',
-      options: null,
-      filteredOptions: []
-    }
+      menus: [{ icon: "inbox", label: "Tracker", route: "/", separator: true }],
+      drawerLeft: false
+    };
   },
-  methods: {
-    filter (val, update) {
-      if (this.options === null) {
-        // load data
-        setTimeout(() => {
-          this.options = stringOptions
-          this.$refs.search.filter('')
-        }, 2000)
-        update()
-        return
-      }
-      if (val === '') {
-        update(() => {
-          this.filteredOptions = this.options.map(op => ({ label: op }))
-        })
-        return
-      }
-      update(() => {
-        this.filteredOptions = [
-          {
-            label: val,
-            type: 'In this repository'
-          },
-          {
-            label: val,
-            type: 'All GitHub'
-          },
-          ...this.options
-            .filter(op => op.toLowerCase().includes(val.toLowerCase()))
-            .map(op => ({ label: op }))
-        ]
-      })
-    }
-  },
-  created () {
-    this.fabGithub = fabGithub
+  components: {
+    ApplauseBtn
   }
-}
+};
 </script>
 
 <style lang="sass">
 .GL
-  &__select-GL__menu-link
-    .default-type
-      visibility: hidden
-    &:hover
-      background: #0366d6
-      color: white
-      .q-item__section--side
-        color: white
-      .default-type
-        visibility: visible
   &__toolbar-link
     a
       color: white
       text-decoration: none
       &:hover
         opacity: 0.7
-  &__menu-link:hover
-    background: #0366d6
-    color: white
-  &__menu-link-signed-in
-  &__menu-link-status
-    &:hover
-      & > div
-        background: white !important
-  &__menu-link-status
-    color: $blue-grey-6
-    &:hover
-      color: $light-blue-9
-  &__toolbar-select.q-field--focused
-    width: 450px !important
-    .q-field__append
-      display: none
 </style>

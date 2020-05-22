@@ -874,6 +874,11 @@
     global-agent "^2.0.2"
     global-tunnel-ng "^2.7.1"
 
+"@growthbunker/vueflags@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@growthbunker/vueflags/-/vueflags-0.1.0.tgz#c81ede4f82da117df71816e140e20662f69e2eaa"
+  integrity sha512-Ukc0h60pWatbH2hNgqoC70e2Cls2mvsR6M+jEMH+Qca2ZkzbL1sybEu7M7KSnSL0E08+miW4yd9xs/MlATtJOg==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
