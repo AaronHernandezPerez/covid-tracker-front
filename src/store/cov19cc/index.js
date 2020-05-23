@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+/**
+ * Unused
+ */
+
 const state = {
   world: {},
   countries: [],
@@ -22,8 +26,7 @@ const mutations = {
 
 const actions = {
   async fetchReport({ commit }) {
-    console.log('executing fetch report')
-    // state.loadingPromise=
+    console.log('executing fetch report');
     const response = await axios.get('https://cov19.cc/report.json');
 
     commit('parseReport', response.data);

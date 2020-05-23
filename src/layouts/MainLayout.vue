@@ -28,9 +28,11 @@
           v-if="$q.screen.gt.sm"
           class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap"
         >
-          <router-link v-for="menu in menus" v-bind:key="menu.label" :to="menu.route">
-            <a href="menu.route" class="text-white">{{$t(menu.label)}}</a>
-          </router-link>
+          <router-link
+            v-for="menu in menus"
+            v-bind:key="menu.label"
+            :to="menu.route"
+          >{{$t(menu.label)}}</router-link>
         </div>
 
         <q-space />
@@ -53,7 +55,7 @@
     >
       <q-scroll-area class="fit">
         <q-list v-for="(menu, index) in menus" :key="index">
-          <q-item clickable :active="menu.label === 'Outbox'" v-ripple>
+          <q-item clickable :to="menu.route" v-ripple>
             <q-item-section avatar>
               <q-icon :name="menu.icon" />
             </q-item-section>
@@ -77,7 +79,15 @@ export default {
   name: "MyLayout",
   data() {
     return {
-      menus: [{ icon: "inbox", label: "Tracker", route: "/", separator: true }],
+      menus: [
+        {
+          icon: "fas fa-chart-line",
+          label: "Tracker",
+          route: "/",
+          separator: false
+        },
+        { icon: "inbox", label: "Test", route: "/another", separator: false }
+      ],
       drawerLeft: false
     };
   },
@@ -95,4 +105,6 @@ export default {
       text-decoration: none
       &:hover
         opacity: 0.7
+      &.router-link-active
+        color: $primary
 </style>

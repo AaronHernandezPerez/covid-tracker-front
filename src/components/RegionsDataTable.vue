@@ -2,12 +2,14 @@
   <q-card flat class="my-card">
     <q-card-section>
       <q-table
+        v-if="countries"
         class="my-table"
         title="Datos por países"
         :data="countries"
         :columns="columns"
         :pagination.sync="pagination"
         :filter="filter"
+        :binary-state-sort="true"
         dense
       >
         <template v-slot:top-right>
@@ -17,22 +19,24 @@
             </template>
           </q-input>
         </template>
+
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" auto-width>
             <PlusButton :row="props"></PlusButton>
           </q-td>
         </template>
-        <template v-slot:body-cell-name="props">
-          <q-td :props="props">
+        <template v-slot:body-cell-country="props">
+          <q-td :props="props" auto-width>
             <div class="flex items-center">
-              <q-tooltip>Very good!</q-tooltip>
-
-              <gb-flag class="c-flag q-mr-sm" :code="props.row.country_code" />
+              <gb-flag class="c-flag q-mr-sm" :code="props.row.countryInfo.iso2" />
               {{props.row.country}}
             </div>
           </q-td>
         </template>
       </q-table>
+      <div v-else class="flex align-center justify-center q-pa-lg" style="font-size: 10em">
+        <q-spinner-oval color="red-7" />
+      </div>
     </q-card-section>
   </q-card>
 </template>
@@ -41,7 +45,7 @@
 <script>
 import { mapState } from "vuex";
 import PlusButton from "src/components/PlusButton";
-//  { "country": "Hong Kong", "confirmed": 1064, "deaths": 4, "recovered": 1029, "last_updated": "2020-05-22T08:45:13Z", "country_code": "hk", "daily_confirmed": -1, "daily_deaths": -1, "critical": 1, "tests": 168291 }
+
 export default {
   name: "TotalSummary",
   data() {
@@ -56,19 +60,21 @@ export default {
       columns: [
         { name: "actions", label: "", field: "", align: "center" },
         {
-          name: "name",
+          name: "country",
           align: "left",
-          label: "Nombre",
+          label: "País",
           field: "country",
-          sortable: true
+          sortable: true,
+          classes: "name-col"
         },
         {
           name: "confirmed",
           align: "left",
           label: "Confirmados",
-          field: "confirmed",
+          field: "cases",
           sortable: true,
-          classes: "text-blue-7"
+          classes: "text-blue-7",
+          format: val => val.toLocaleString()
         },
         {
           name: "deaths",
@@ -76,7 +82,8 @@ export default {
           label: "Muertes",
           field: "deaths",
           sortable: true,
-          classes: "text-red-7"
+          classes: "text-red-7",
+          format: val => val.toLocaleString()
         },
         {
           name: "critical",
@@ -84,16 +91,17 @@ export default {
           label: "Críticos",
           field: "critical",
           sortable: true,
-          classes: "text-orange-7"
+          classes: "text-orange-7",
+          format: val => val.toLocaleString()
         },
         {
           name: "active",
           align: "left",
           label: "Casos activos",
-          field: "",
+          field: "active",
           sortable: true,
           classes: "text-amber-7",
-          format: (val, row) => `${row.confirmed - row.recovered - row.deaths}`
+          format: val => val.toLocaleString()
         },
         {
           name: "tests",
@@ -101,7 +109,8 @@ export default {
           label: "Tests",
           field: "tests",
           sortable: true,
-          classes: "text-yellow-7"
+          classes: "text-yellow-7",
+          format: val => val.toLocaleString()
         },
         {
           name: "recovered",
@@ -109,13 +118,14 @@ export default {
           label: "Recuperados",
           field: "recovered",
           sortable: true,
-          classes: "text-green-7"
+          classes: "text-green-7",
+          format: val => val.toLocaleString()
         }
       ]
     };
   },
   computed: {
-    ...mapState("cov19cc", ["countries"])
+    ...mapState("novelCOVID", ["countries"])
   },
   methods: {
     test(t) {
@@ -131,6 +141,9 @@ export default {
 <style lang="scss" scoped>
 .c-flag {
   border-radius: 10px;
-  // font-size: 1.8em;
+}
+
+.name-col {
+  min-width: 250px;
 }
 </style>

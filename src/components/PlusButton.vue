@@ -3,7 +3,7 @@
     dense
     round
     flat
-    color="purple-7"
+    color="accent"
     @click="openDetails(row)"
     :icon="(hovered) ? 'add_circle' :'add_circle_outline'"
     @mouseenter="hovered=true"

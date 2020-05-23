@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import cov19cc from './cov19cc'
 import novelCOVID from './novelCOVID'
+import claps from './claps'
 
 Vue.use(Vuex)
 
@@ -19,7 +20,8 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       cov19cc,
-      novelCOVID
+      novelCOVID,
+      claps
     },
 
     // enable strict mode (adds overhead!)

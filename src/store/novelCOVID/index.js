@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const state = {
-  world: {},
-  countries: [],
+  world: null,
+  countries: null,
   loadingPromise: null,
 };
 
@@ -10,30 +10,26 @@ const getters = {
 };
 
 const mutations = {
+  resetReport: (state, data) => {
+    state.world = null;
+    state.countries = null;
+  },
   parseReport: (state, data) => {
-    state.world = data[0];
-    if (state.world.country !== 'World') {
-      // Manually parse data
-      const [pass, fail] = a.reduce(([p, f], e) => (e.country !== 'World' ? [[...p, e], f] : [p, [...f, e]]), [[], []]);
-      state.countries = pass;
-      state.world = fail;
-    } else {
-      data.shift();
-    }
-
-    state.countries = data.sort((a, b) => {
-      var x = a['country']; var y = b['country'];
-      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    });
+    state.world = data[0].data;
+    state.countries = data[1].data
   }
 };
 
 const actions = {
   async fetchReport({ commit }) {
-    console.log('executing fetch report')
-    const response = await axios.get('https://coronavirus-19-api.herokuapp.com/countries');
+    commit('resetReport');
 
-    commit('parseReport', response.data);
+    const response = await axios.all([
+      axios.get('https://disease.sh/v2/all'),
+      axios.get('https://disease.sh/v2/countries')
+    ]);
+
+    commit('parseReport', response);
   },
 
 };

@@ -14,6 +14,11 @@ quasar dev -m cordova -T android
 quasar dev -m capacitor -T android
 ```
 
+Open emulator
+```bash
+D:\Android-sdk\emulator\emulator.exe  -avd Pixel_3a_API_28 -netdelay none -netspeed full
+```
+
 ### Lint the files
 ```bash
 yarn run lint
@@ -77,3 +82,11 @@ to
 ```
 android:name="androidx.core.content.FileProvider"
 ```
+
+
+### Notes
+
+```
+const [pass, fail] = a.reduce(([p, f], e) => (e.country !== 'World' ? [[...p, e], f] : [p, [...f, e]]), [[], []]);
+```
+s

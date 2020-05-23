@@ -16,6 +16,7 @@
     "@growthbunker/vueflags": "^0.1.0",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "country-code-lookup": "^0.0.17",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0"
   },

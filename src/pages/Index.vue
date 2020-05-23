@@ -20,10 +20,15 @@ export default {
   name: "PageIndex",
   components: { TotalSummary, RegionsDataTable },
   methods: {
-    ...mapActions("cov19cc", ["fetchReport"])
+    ...mapActions("novelCOVID", ["fetchReport"])
   },
   created() {
     this.fetchReport();
+  },
+  mounted: function() {
+    window.setInterval(() => {
+      this.fetchReport();
+    }, 15 * 60 * 1000); // 15 min
   }
 };
 </script>
