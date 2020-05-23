@@ -2,15 +2,15 @@
   <q-card flat class="my-card">
     <q-card-section>
       <h3 class="text-center">
-        Totales
+        {{$t('totals')}}
         <q-badge align="top" class="text-subtitle2">
           Live
           <q-tooltip
-            anchor="bottom middle"
+            anchor="top middle"
             self="center middle"
             content-style="font-size: 14px"
             content-class="bg-black text-weight-bold text-primary"
-          >Los datos se actualizan cada 15 min</q-tooltip>
+          >{{$t('totalTooltip')}}</q-tooltip>
         </q-badge>
       </h3>
     </q-card-section>
@@ -18,37 +18,37 @@
       <q-card-section>
         <div
           class="text-h3 text-center text-blue-7 text-weight-bold"
-          v-text="world.cases.toLocaleString()"
+          v-text="$options.filters.formatIntDot(world.cases)"
         ></div>
-        <p class="text-center">Casos confirmados</p>
+        <p class="text-center">{{$t('confirmedCases')}}</p>
       </q-card-section>
       <q-card-section color="primary">
         <div
           class="text-h3 text-center text-red-7 text-weight-bold"
-          v-text="world.deaths.toLocaleString()"
+          v-text="$options.filters.formatIntDot(world.deaths)"
         ></div>
-        <p class="text-center">Muertes</p>
+        <p class="text-center">{{$t('deaths')}}</p>
       </q-card-section>
       <q-card-section>
         <div
           class="text-h3 text-center text-orange-7 text-weight-bold"
-          v-text="world.critical.toLocaleString()"
+          v-text="$options.filters.formatIntDot(world.critical)"
         ></div>
-        <p class="text-center">Críticos</p>
+        <p class="text-center">{{$t('critical')}}</p>
       </q-card-section>
       <q-card-section>
         <div
           class="text-h3 text-center text-amber-7 text-weight-bold"
-          v-text="world.active.toLocaleString()"
+          v-text="$options.filters.formatIntDot(world.active)"
         ></div>
-        <p class="text-center">Casos activos</p>
+        <p class="text-center">{{$t('activeCases')}}</p>
       </q-card-section>
       <q-card-section>
         <div
           class="text-h3 text-center text-green-7 text-weight-bold"
-          v-text="world.recovered.toLocaleString()"
+          v-text="$options.filters.formatIntDot(world.recovered)"
         ></div>
-        <p class="text-center">Recuperados</p>
+        <p class="text-center">{{$t('recovered')}}</p>
       </q-card-section>
     </div>
     <div v-else class="flex align-center justify-center q-pa-lg" style="font-size: 8em">

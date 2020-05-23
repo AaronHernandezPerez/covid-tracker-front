@@ -17,8 +17,10 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "country-code-lookup": "^0.0.17",
+    "i18n-iso-countries": "^5.4.0",
     "quasar": "^1.0.0",
-    "vue-i18n": "^8.0.0"
+    "vue-i18n": "^8.0.0",
+    "vue-numeral-filter": "^2.0.0"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",

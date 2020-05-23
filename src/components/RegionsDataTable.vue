@@ -4,7 +4,7 @@
       <q-table
         v-if="countries"
         class="my-table"
-        title="Datos por países"
+        :title="$t('dataPerCountry')"
         :data="countries"
         :columns="columns"
         :pagination.sync="pagination"
@@ -13,9 +13,16 @@
         dense
       >
         <template v-slot:top-right>
-          <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+          <q-input
+            borderless
+            dense
+            debounce="300"
+            v-model="filter"
+            :placeholder="$t('search')"
+            ref="searchInput"
+          >
             <template v-slot:append>
-              <q-icon name="search" />
+              <q-icon name="search" @click="$refs.searchInput.focus()" />
             </template>
           </q-input>
         </template>
@@ -29,7 +36,8 @@
           <q-td :props="props" auto-width>
             <div class="flex items-center">
               <gb-flag class="c-flag q-mr-sm" :code="props.row.countryInfo.iso2" />
-              {{props.row.country}}
+              {{props.row.countryInfo.iso2 | translateCountry2}},
+              {{props.row}}
             </div>
           </q-td>
         </template>
@@ -62,7 +70,7 @@ export default {
         {
           name: "country",
           align: "left",
-          label: "País",
+          label: this.$t("country"),
           field: "country",
           sortable: true,
           classes: "name-col"
@@ -70,67 +78,71 @@ export default {
         {
           name: "confirmed",
           align: "left",
-          label: "Confirmados",
+          label: this.$t("confirmed"),
           field: "cases",
           sortable: true,
           classes: "text-blue-7",
-          format: val => val.toLocaleString()
+          format: val => this.formatOrUnknown(val)
         },
         {
           name: "deaths",
           align: "left",
-          label: "Muertes",
+          label: this.$t("deaths"),
           field: "deaths",
           sortable: true,
           classes: "text-red-7",
-          format: val => val.toLocaleString()
+          format: val => this.formatOrUnknown(val)
         },
         {
           name: "critical",
           align: "left",
-          label: "Críticos",
+          label: this.$t("critical"),
           field: "critical",
           sortable: true,
           classes: "text-orange-7",
-          format: val => val.toLocaleString()
+          format: val => this.formatOrUnknown(val)
         },
         {
           name: "active",
           align: "left",
-          label: "Casos activos",
+          label: this.$t("activeCases"),
           field: "active",
           sortable: true,
           classes: "text-amber-7",
-          format: val => val.toLocaleString()
+          format: val => this.formatOrUnknown(val)
         },
         {
           name: "tests",
           align: "left",
-          label: "Tests",
+          label: this.$t("tests"),
           field: "tests",
           sortable: true,
           classes: "text-yellow-7",
-          format: val => val.toLocaleString()
+          format: val => this.formatOrUnknown(val)
         },
         {
           name: "recovered",
           align: "left",
-          label: "Recuperados",
+          label: this.$t("recovered"),
           field: "recovered",
           sortable: true,
           classes: "text-green-7",
-          format: val => val.toLocaleString()
+          format: val => this.formatOrUnknown(val)
         }
       ]
     };
   },
+  methods: {
+    formatOrUnknown(val) {
+      if (!val) {
+        return this.$t("unknown");
+      }
+
+      return this.$options.filters.formatIntDot(val);
+    }
+  },
   computed: {
     ...mapState("novelCOVID", ["countries"])
-  },
-  methods: {
-    test(t) {
-      console.log("da", t, event);
-    }
   },
   components: {
     PlusButton

@@ -59,7 +59,7 @@
             <q-item-section avatar>
               <q-icon :name="menu.icon" />
             </q-item-section>
-            <q-item-section>{{ menu.label }}</q-item-section>
+            <q-item-section>{{ $t(menu.label) }}</q-item-section>
           </q-item>
 
           <q-separator v-if="menu.separator" />
@@ -85,8 +85,8 @@ export default {
           label: "Tracker",
           route: "/",
           separator: false
-        },
-        { icon: "inbox", label: "Test", route: "/another", separator: false }
+        }
+        // { icon: "inbox", label: "Test", route: "/another", separator: false }
       ],
       drawerLeft: false
     };

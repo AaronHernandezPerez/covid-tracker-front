@@ -37,7 +37,8 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 ### Extract i18n keys
 
 ```bash
-yarn vue-i18n-extract report -a -v './src/**/*.?(js|vue)' -l './src/i18n/*.?(js|json|yml|yaml)'
+yarn vue-i18n-extract report -a -v "./src/**/*.?(js|vue)" -l "./src/i18n/*.?(js|json|yml|yaml)"
+yarn vue-i18n-extract report -a -v "D:/proyectos/covid-tracker-front/src/**/*.?(js|vue)" -l "D:/proyectos/covid-tracker-front/src/i18n/*.?(js|json|yml|yaml)"
 ```
 
 ### Sign cordova android apk
@@ -89,4 +90,3 @@ android:name="androidx.core.content.FileProvider"
 ```
 const [pass, fail] = a.reduce(([p, f], e) => (e.country !== 'World' ? [[...p, e], f] : [p, [...f, e]]), [[], []]);
 ```
-s

@@ -1,0 +1,19 @@
+{
+  "Tracker": "Tracker",
+  "activeCases": "Casos activos",
+  "applauseTooltip": "¡Aplaude a los trabajadores esenciales!",
+  "confirmed": "Confirmados",
+  "confirmedCases": "Casos confirmados",
+  "country": "País",
+  "critical": "Criticos",
+  "dataPerCountry": "Datos por países",
+  "deaths": "Muertes",
+  "failed": "Acción fallida",
+  "recovered": "Recuperados",
+  "search": "Búsqueda",
+  "success": "Acción completada con éxito",
+  "tests": "Tests",
+  "totalTooltip": "Los datos se actualizan cada 15 min",
+  "totals": "Totales",
+  "unknown": "No disponible"
+}

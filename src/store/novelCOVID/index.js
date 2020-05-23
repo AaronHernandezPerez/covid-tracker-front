@@ -16,7 +16,7 @@ const mutations = {
   },
   parseReport: (state, data) => {
     state.world = data[0].data;
-    state.countries = data[1].data
+    state.countries = data[1].data.filter(e => e.countryInfo.iso2 !== null)
   }
 };
 
