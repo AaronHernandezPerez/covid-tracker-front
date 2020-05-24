@@ -99,7 +99,7 @@
           />-->
         </template>
       </q-table>
-      <div v-else class="flex align-center justify-center q-pa-lg" style="font-size: 10em">
+      <div v-else class="flex items-center justify-center q-pa-lg" style="font-size: 10em">
         <q-spinner-oval color="red-7" />
       </div>
     </q-card-section>
@@ -110,7 +110,6 @@
 <script>
 import { mapState } from "vuex";
 import PlusButton from "src/components/PlusButton";
-// TODO @input.stop to pagination select or smth for mobile
 
 export default {
   name: "TotalSummary",
@@ -215,7 +214,7 @@ export default {
         return this.$t("unknown");
       }
 
-      return this.$options.filters.formatIntDot(val);
+      return this.$options.filters.formatNumberDot(val);
     }
   },
   computed: {

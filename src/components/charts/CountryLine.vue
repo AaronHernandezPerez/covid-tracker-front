@@ -59,7 +59,7 @@ export default {
               label: (tooltipItem, data) => {
                 return (
                   `${data.datasets[tooltipItem.datasetIndex].label}: ` +
-                  this.$options.filters.formatIntDot(tooltipItem.yLabel)
+                  this.$options.filters.formatNumberDot(tooltipItem.yLabel)
                 );
               }
             }
@@ -147,4 +147,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.chart-container {
+  position: relative;
+  min-height: 500px;
+}
 </style>

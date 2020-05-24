@@ -19,6 +19,6 @@ Vue.filter('translateCountry2', function (value) {
   return name
 });
 
-Vue.filter('formatIntDot', function (value) {
+Vue.filter('formatNumberDot', function (value) {
   return parseInt(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 });

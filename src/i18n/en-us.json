@@ -19,5 +19,6 @@
   "totalTooltip": "The data is updated every 15 min",
   "Tracker": "Tracker",
   "unknown": "Unknown",
-  "fullscreen": "Fullscreen"
+  "fullscreen": "Fullscreen",
+  "statistics": "Statistics"
 }
