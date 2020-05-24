@@ -9,15 +9,20 @@
   "dataPerCountry": "Datos por países",
   "deaths": "Muertes",
   "failed": "Acción fallida",
+  "fatality": "Fatalidad",
+  "fullscreen": "Pantalla completa",
+  "healed": "Curados",
   "nothingHere": "Disculpa, aquí no hay nada",
+  "percentagePopulation": "De la población ha tenido el virus",
+  "perMillion": "por millón",
   "recovered": "Recuperados",
   "search": "Búsqueda",
+  "statistics": "Estadísticas",
   "success": "Acción completada con éxito",
   "tests": "Tests",
   "timeline": "Cronología",
   "totals": "Totales",
   "totalTooltip": "Los datos se actualizan cada 15 min",
   "Tracker": "Tracker",
-  "unknown": "No disponible",
-  "fullscreen": "Pantalla completa"
+  "unknown": "No disponible"
 }

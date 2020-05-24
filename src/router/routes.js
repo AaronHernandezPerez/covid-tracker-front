@@ -7,6 +7,14 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'country/:id', component: () => import('pages/Country.vue') }
     ]
+  },
+  {
+    path: '/test/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Test.vue') }
+
+    ]
   }
 ]
 

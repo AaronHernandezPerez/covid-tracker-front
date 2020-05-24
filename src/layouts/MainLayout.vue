@@ -27,18 +27,19 @@
 
         <div
           v-if="$q.screen.gt.sm"
-          class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap"
+          class="GL__toolbar-link q-ml-xs q-gutter-md text-body2 text-weight-bold flex items-center no-wrap"
         >
           <router-link
             v-for="menu in menus"
             v-bind:key="menu.label"
+            exact
             :to="menu.route"
           >{{$t(menu.label)}}</router-link>
         </div>
 
         <q-space />
 
-        <div class="q-pl-sm q-gutter-sm row items-center no-wrap">
+        <div class="q-pl-sm q-gutter-sm flex items-center no-wrap">
           <ApplauseBtn />
 
           <q-btn flat dense size="19px" icon="monetization_on" label="Give me money" />
@@ -56,7 +57,7 @@
     >
       <q-scroll-area class="fit">
         <q-list v-for="(menu, index) in menus" :key="index">
-          <q-item clickable :to="menu.route" v-ripple @click="closeDrawer()">
+          <q-item clickable :to="menu.route" exact v-ripple @click="closeDrawer()">
             <q-item-section avatar>
               <q-icon :name="menu.icon" />
             </q-item-section>
@@ -87,7 +88,7 @@ export default {
           route: "/",
           separator: false
         },
-        { icon: "inbox", label: "Test", route: "/jaja", separator: false }
+        { icon: "inbox", label: "Test", route: "/test", separator: false }
       ],
       drawerLeft: false
     };

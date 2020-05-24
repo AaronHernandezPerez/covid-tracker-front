@@ -129,7 +129,6 @@ export default {
       }
 
       this.chart.update();
-      this.dataLoaded = true;
     }
   },
   mounted() {
@@ -148,6 +147,7 @@ export default {
 
 <style lang="scss" scoped>
 .chart-container {
+  display: flex;
   position: relative;
   min-height: 500px;
 }
