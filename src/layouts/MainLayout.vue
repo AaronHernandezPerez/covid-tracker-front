@@ -12,17 +12,15 @@
           class="q-mr-md"
         />
         <q-btn
-          round
           dense
           flat
           :ripple="false"
           icon="fas fa-lungs-virus"
           size="19px"
           color="white"
-          class="q-mr-sm"
+          class="q-mr-sm q-pa-xs"
           no-caps
           to="/"
-          exact
         ></q-btn>
 
         <div
@@ -32,7 +30,6 @@
           <router-link
             v-for="menu in menus"
             v-bind:key="menu.label"
-            exact
             :to="menu.route"
           >{{$t(menu.label)}}</router-link>
         </div>
@@ -57,7 +54,7 @@
     >
       <q-scroll-area class="fit">
         <q-list v-for="(menu, index) in menus" :key="index">
-          <q-item clickable :to="menu.route" exact v-ripple @click="closeDrawer()">
+          <q-item clickable :to="menu.route" v-ripple @click="closeDrawer()">
             <q-item-section avatar>
               <q-icon :name="menu.icon" />
             </q-item-section>
