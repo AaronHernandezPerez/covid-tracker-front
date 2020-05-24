@@ -14,12 +14,11 @@
       style="min-width: 150px;"
     >
       <q-tooltip
-        anchor="center left"
+        anchor="bottom middle"
         self="center middle"
         content-style="font-size: 16px"
         content-class="bg-black text-weight-bold"
-        :delay="500"
-        :offset="[120, 0]"
+        :offset="[0, 25]"
       >{{$t('applauseTooltip')}}</q-tooltip>
     </q-btn>
   </div>
@@ -28,7 +27,6 @@
 <script>
 import Vue from "vue";
 import { mapState, mapActions } from "vuex";
-import vueNumeralFilterInstaller from "vue-numeral-filter";
 import PlusOneFade from "src/components/PlusOnefade";
 
 export default {
@@ -59,7 +57,9 @@ export default {
     ...mapState("claps", ["claps"]),
     formatedApplauses() {
       if (this.claps) {
-        return this.$options.filters.numeral(this.claps, "0.00a");
+        return this.$options.filters
+          .numeral(this.claps, "0.00a")
+          .replace(".", ",");
       } else {
         return "...";
       }

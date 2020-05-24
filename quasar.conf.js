@@ -15,9 +15,10 @@ module.exports = function (/* ctx */) {
     boot: [
       'quasar-lang-pack',
       'i18n',
+      'filters',
       'axios',
       'vueFlags',
-      'filters'
+      'chartjs'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

@@ -49,7 +49,7 @@
         </template>
 
         <template v-slot:body-cell-country="props">
-          <q-td :props="props" auto-width>
+          <q-td :props="props">
             <div class="flex items-center">
               <gb-flag class="c-flag q-mr-sm" :code="props.row.countryInfo.iso2" />
               {{props.row.countryInfo.iso2 | translateCountry2}}
@@ -131,7 +131,9 @@ export default {
           label: this.$t("country"),
           field: "country",
           sortable: true,
-          classes: "name-col"
+          classes: "name-col",
+          style: "font-size:18px",
+          headerStyle: "font-size:20px"
         },
         {
           name: "confirmed",
@@ -140,6 +142,8 @@ export default {
           field: "cases",
           sortable: true,
           classes: "text-blue-7",
+          style: "font-size:18px",
+          headerStyle: "font-size:20px",
           format: val => this.formatOrUnknown(val)
         },
         {
@@ -149,6 +153,8 @@ export default {
           field: "deaths",
           sortable: true,
           classes: "text-red-7",
+          style: "font-size:18px",
+          headerStyle: "font-size:20px",
           format: val => this.formatOrUnknown(val)
         },
         {
@@ -158,6 +164,8 @@ export default {
           field: "critical",
           sortable: true,
           classes: "text-orange-7",
+          style: "font-size:18px",
+          headerStyle: "font-size:20px",
           format: val => this.formatOrUnknown(val)
         },
         {
@@ -167,6 +175,8 @@ export default {
           field: "active",
           sortable: true,
           classes: "text-yellow-7",
+          style: "font-size:18px",
+          headerStyle: "font-size:20px",
           format: val => this.formatOrUnknown(val)
         },
         {
@@ -176,6 +186,8 @@ export default {
           field: "tests",
           sortable: true,
           classes: "text-cyan",
+          style: "font-size:18px",
+          headerStyle: "font-size:20px",
           format: val => this.formatOrUnknown(val)
         },
         {
@@ -185,6 +197,8 @@ export default {
           field: "recovered",
           sortable: true,
           classes: "text-green-7",
+          style: "font-size:18px",
+          headerStyle: "font-size:20px",
           format: (val, row) => {
             if (!val) {
               val = row.cases - row.active;
@@ -219,7 +233,7 @@ export default {
 }
 
 .name-col {
-  min-width: 250px;
+  min-width: 300px;
 }
 
 .search-icon {

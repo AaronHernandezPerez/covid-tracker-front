@@ -9,6 +9,7 @@
           round
           dense
           icon="menu"
+          class="q-mr-md"
         />
         <q-btn
           round
