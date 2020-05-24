@@ -25,13 +25,12 @@ const actions = {
     commit('resetReport');
 
     const response = await axios.all([
-      axios.get('https://disease.sh/v2/all'),
-      axios.get('https://disease.sh/v2/countries')
+      axios.get('https://corona.lmao.ninja/v2/all'),
+      axios.get('https://corona.lmao.ninja/v2/countries?sort=country/countries')
     ]);
 
     commit('parseReport', response);
   },
-
 };
 
 

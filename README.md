@@ -28,6 +28,7 @@ yarn run lint
 ```bash
 quasar build
 quasar build -m android
+quasar build -m capacitor -T android
 ```
 
 ### Customize the configuration
@@ -41,27 +42,27 @@ yarn vue-i18n-extract report -a -v "./src/**/*.?(js|vue)" -l "./src/i18n/*.?(js|
 yarn vue-i18n-extract report -a -v "D:/proyectos/covid-tracker-front/src/**/*.?(js|vue)" -l "D:/proyectos/covid-tracker-front/src/i18n/*.?(js|json|yml|yaml)"
 ```
 
-### Sign cordova android apk
+# Sign cordova android apk
 
-# Generates Key 
+### Generates Key 
 pass: 119k30p.
 ```bash
 keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 20000
 ```
-# Signs apk with key
+###  Signs apk with key
 ```bash
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore <path-to-unsigned-apk-file> alias_name
 ```
-# Generates signed apk
+###  Generates signed apk
 ```bash
 zipalign -v 4 <path-to-same-apk-file> HelloWorld.apk
 ```
 
-### Cordova issues
+## Cordova issues
 If gradle fails open with ide and build gradle
 
 
-### Capacitor issues
+## Capacitor issues
 If there is the following issue when running
 ```
 Manifest merger failed : Attribute application@appComponentFactory value=(android.support.v4.app.CoreComponentFactory) from [com.android.support:support-compat:28.0.0] AndroidManifest.xml:22:18-91

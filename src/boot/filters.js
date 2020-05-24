@@ -12,7 +12,7 @@ Vue.filter('translateCountry2', function (value) {
   let name;
 
   try {
-    name = i18nCountries.getName(value, Quasar.lang.getLocale().slice(0, 2)).split(' (').shift()
+    name = i18nCountries.getName(value, Quasar.lang.getLocale().slice(0, 2)).split(',').shift().split(' (').shift()
   } catch (error) {
   }
 

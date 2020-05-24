@@ -1,6 +1,6 @@
 {
-  "Tracker": "Tracker",
   "activeCases": "Casos activos",
+  "actives": "Activos",
   "applauseTooltip": "¡Aplaude a los trabajadores esenciales!",
   "confirmed": "Confirmados",
   "confirmedCases": "Casos confirmados",
@@ -9,11 +9,15 @@
   "dataPerCountry": "Datos por países",
   "deaths": "Muertes",
   "failed": "Acción fallida",
+  "nothingHere": "Disculpa, aquí no hay nada",
   "recovered": "Recuperados",
   "search": "Búsqueda",
   "success": "Acción completada con éxito",
   "tests": "Tests",
-  "totalTooltip": "Los datos se actualizan cada 15 min",
+  "timeline": "Cronología",
   "totals": "Totales",
-  "unknown": "No disponible"
+  "totalTooltip": "Los datos se actualizan cada 15 min",
+  "Tracker": "Tracker",
+  "unknown": "No disponible",
+  "fullscreen": "Pantalla completa"
 }

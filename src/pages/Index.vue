@@ -17,6 +17,11 @@ import TotalSummary from "src/components/TotalSummary";
 import RegionsDataTable from "src/components/RegionsDataTable";
 
 export default {
+  data() {
+    return {
+      polling: null
+    };
+  },
   name: "PageIndex",
   components: { TotalSummary, RegionsDataTable },
   methods: {
@@ -26,9 +31,12 @@ export default {
     this.fetchReport();
   },
   mounted: function() {
-    window.setInterval(() => {
+    this.polling = setInterval(() => {
       this.fetchReport();
     }, 15 * 60 * 1000); // 15 min
+  },
+  beforeDestroy() {
+    clearInterval(this.polling);
   }
 };
 </script>

@@ -15,14 +15,14 @@
           dense
           flat
           :ripple="false"
-          :icon="'fas fa-virus'"
+          icon="fas fa-lungs-virus"
           size="19px"
           color="white"
           class="q-mr-sm"
           no-caps
           to="/"
           exact
-        />
+        ></q-btn>
 
         <div
           v-if="$q.screen.gt.sm"
@@ -55,7 +55,7 @@
     >
       <q-scroll-area class="fit">
         <q-list v-for="(menu, index) in menus" :key="index">
-          <q-item clickable :to="menu.route" v-ripple>
+          <q-item clickable :to="menu.route" v-ripple @click="closeDrawer()">
             <q-item-section avatar>
               <q-icon :name="menu.icon" />
             </q-item-section>
@@ -85,11 +85,16 @@ export default {
           label: "Tracker",
           route: "/",
           separator: false
-        }
-        // { icon: "inbox", label: "Test", route: "/another", separator: false }
+        },
+        { icon: "inbox", label: "Test", route: "/jaja", separator: false }
       ],
       drawerLeft: false
     };
+  },
+  methods: {
+    closeDrawer() {
+      this.drawerLeft = false;
+    }
   },
   components: {
     ApplauseBtn
@@ -97,14 +102,31 @@ export default {
 };
 </script>
 
-<style lang="sass">
-.GL
-  &__toolbar-link
-    a
-      color: white
-      text-decoration: none
-      &:hover
-        opacity: 0.7
-      &.router-link-active
-        color: $primary
+<style lang="scss" scoped>
+.GL__toolbar-link {
+  font-size: 19px;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &.router-link-active {
+      color: $primary;
+    }
+  }
+}
+
+.q-drawer-container {
+  .q-item {
+    .q-item__section--main {
+      color: white;
+    }
+    &.q-router-link--active {
+      background-color: #424242;
+    }
+  }
+}
+//
 </style>

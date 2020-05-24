@@ -10,6 +10,9 @@ export default async ({ app, Vue }) => {
   i18nCountries.registerLocale(require("i18n-iso-countries/langs/en.json"));
   i18nCountries.registerLocale(require("i18n-iso-countries/langs/es.json"));
 
+  // Moment
+  moment.locale(Quasar.lang.getLocale())
+
   Vue.use(VueI18n)
   // Set i18n instance on app
   app.i18n = new VueI18n({

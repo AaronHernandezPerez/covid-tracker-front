@@ -12,9 +12,24 @@
         :binary-state-sort="true"
         dense
       >
-        <template v-slot:top-right>
+        <template v-slot:top-right="props">
+          <q-btn
+            flat
+            round
+            dense
+            :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
+            @click="props.toggleFullscreen"
+            class="q-mr-xl"
+          >
+            <q-tooltip
+              anchor="top middle"
+              self="center middle"
+              content-style="font-size: 14px"
+              content-class="bg-black text-weight-bold"
+            >{{$t('fullscreen')}}</q-tooltip>
+          </q-btn>
+
           <q-input
-            borderless
             dense
             debounce="300"
             v-model="filter"
@@ -22,24 +37,66 @@
             ref="searchInput"
           >
             <template v-slot:append>
-              <q-icon name="search" @click="$refs.searchInput.focus()" />
+              <q-icon class="search-icon" name="search" @click="$refs.searchInput.focus()" />
             </template>
           </q-input>
         </template>
 
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" auto-width>
-            <PlusButton :row="props"></PlusButton>
+            <PlusButton :country="props.row.countryInfo.iso2"></PlusButton>
           </q-td>
         </template>
+
         <template v-slot:body-cell-country="props">
           <q-td :props="props" auto-width>
             <div class="flex items-center">
               <gb-flag class="c-flag q-mr-sm" :code="props.row.countryInfo.iso2" />
-              {{props.row.countryInfo.iso2 | translateCountry2}},
-              {{props.row}}
+              {{props.row.countryInfo.iso2 | translateCountry2}}
             </div>
           </q-td>
+        </template>
+
+        <template v-slot:pagination="scope">
+          <!-- <q-btn
+            v-if="scope.pagesNumber > 2"
+            icon="first_page"
+            color="grey-8"
+            round
+            dense
+            flat
+            :disable="scope.isFirstPage"
+            @click="scope.firstPage"
+          />-->
+
+          <q-btn
+            icon="chevron_left"
+            round
+            dense
+            flat
+            :disable="scope.isFirstPage"
+            @click="scope.prevPage()"
+          />
+
+          <q-btn
+            icon="chevron_right"
+            round
+            dense
+            flat
+            :disable="scope.isLastPage"
+            @click="scope.nextPage()"
+          />
+
+          <!-- <q-btn
+            v-if="scope.pagesNumber > 2"
+            icon="last_page"
+            color="grey-8"
+            round
+            dense
+            flat
+            :disable="scope.isLastPage"
+            @click="scope.lastPage"
+          />-->
         </template>
       </q-table>
       <div v-else class="flex align-center justify-center q-pa-lg" style="font-size: 10em">
@@ -53,6 +110,7 @@
 <script>
 import { mapState } from "vuex";
 import PlusButton from "src/components/PlusButton";
+// TODO @input.stop to pagination select or smth for mobile
 
 export default {
   name: "TotalSummary",
@@ -108,7 +166,7 @@ export default {
           label: this.$t("activeCases"),
           field: "active",
           sortable: true,
-          classes: "text-amber-7",
+          classes: "text-yellow-7",
           format: val => this.formatOrUnknown(val)
         },
         {
@@ -117,7 +175,7 @@ export default {
           label: this.$t("tests"),
           field: "tests",
           sortable: true,
-          classes: "text-yellow-7",
+          classes: "text-cyan",
           format: val => this.formatOrUnknown(val)
         },
         {
@@ -127,7 +185,12 @@ export default {
           field: "recovered",
           sortable: true,
           classes: "text-green-7",
-          format: val => this.formatOrUnknown(val)
+          format: (val, row) => {
+            if (!val) {
+              val = row.cases - row.active;
+            }
+            return this.formatOrUnknown(val);
+          }
         }
       ]
     };
@@ -157,5 +220,13 @@ export default {
 
 .name-col {
   min-width: 250px;
+}
+
+.search-icon {
+  cursor: text;
+}
+
+.q-table--dense .q-table__bottom {
+  min-height: auto;
 }
 </style>

@@ -62,7 +62,14 @@ module.exports = function (/* ctx */) {
       ],
 
       config: {
-        dark: true // or Boolean true/false
+        dark: true, // or Boolean true/false
+
+        cordova: {
+          backButtonExit: true / false
+        },
+        capacitor: {
+          backButtonExit: true / false
+        }
       }
     },
 
@@ -77,7 +84,7 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
 
       // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,

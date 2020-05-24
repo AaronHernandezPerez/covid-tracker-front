@@ -9,7 +9,7 @@
             anchor="top middle"
             self="center middle"
             content-style="font-size: 14px"
-            content-class="bg-black text-weight-bold text-primary"
+            content-class="bg-black text-weight-bold"
           >{{$t('totalTooltip')}}</q-tooltip>
         </q-badge>
       </h3>
@@ -38,7 +38,7 @@
       </q-card-section>
       <q-card-section>
         <div
-          class="text-h3 text-center text-amber-7 text-weight-bold"
+          class="text-h3 text-center text-yellow-7 text-weight-bold"
           v-text="$options.filters.formatIntDot(world.active)"
         ></div>
         <p class="text-center">{{$t('activeCases')}}</p>

@@ -14,10 +14,12 @@
       style="min-width: 150px;"
     >
       <q-tooltip
-        anchor="top middle"
+        anchor="center left"
         self="center middle"
         content-style="font-size: 16px"
-        content-class="bg-black text-weight-bold text-primary"
+        content-class="bg-black text-weight-bold"
+        :delay="500"
+        :offset="[120, 0]"
       >{{$t('applauseTooltip')}}</q-tooltip>
     </q-btn>
   </div>
@@ -30,6 +32,11 @@ import vueNumeralFilterInstaller from "vue-numeral-filter";
 import PlusOneFade from "src/components/PlusOnefade";
 
 export default {
+  data() {
+    return {
+      polling: null
+    };
+  },
   methods: {
     ...mapActions("claps", ["fetchClaps", "add_clap"]),
     clap() {
@@ -62,9 +69,12 @@ export default {
     this.fetchClaps();
   },
   mounted: function() {
-    window.setInterval(() => {
+    this.polling = setInterval(() => {
       this.fetchClaps();
     }, 1 * 60 * 1000); // 1 min
+  },
+  beforeDestroy() {
+    clearInterval(this.polling);
   }
 };
 </script>
@@ -72,7 +82,7 @@ export default {
 <style lang="scss" scoped>
 .clap {
   &:active {
-    transform: scale(0.92);
+    transform: scale(0.9);
   }
   transition: transform 0.1s;
   transition-property: transform;
