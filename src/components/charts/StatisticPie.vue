@@ -4,7 +4,7 @@
       <div class="text-h3 text-center text-weight-bold">{{overlay.title}}</div>
       <div class="text-h5 text-center" :class="[overlay.textClass]">{{overlay.text}}</div>
     </div>
-    <canvas :id="_uid"></canvas>
+    <canvas class="chart" :id="_uid"></canvas>
   </div>
 </template>
 
@@ -27,35 +27,34 @@ export default {
             display: false,
             labels: {
               fontColor: "white"
-            },
-            onClick: function(e, legendItem) {
-              const visibleLegend = this.chart.legend.legendItems.find(
-                e => !e.hidden && e.index !== legendItem.index
-              );
-
-              if (visibleLegend) {
-                var index = legendItem.index;
-                var chart = this.chart;
-                var i, ilen, meta;
-
-                for (
-                  i = 0, ilen = (chart.data.datasets || []).length;
-                  i < ilen;
-                  ++i
-                ) {
-                  meta = chart.getDatasetMeta(i);
-                  // toggle visibility of index if exists
-                  if (meta.data[index]) {
-                    meta.data[index].hidden = !meta.data[index].hidden;
-                  }
-                }
-
-                chart.update();
-              }
             }
+            // onClick: function(e, legendItem) {
+            //   const visibleLegend = this.chart.legend.legendItems.find(
+            //     e => !e.hidden && e.index !== legendItem.index
+            //   );
+
+            //   if (visibleLegend) {
+            //     var index = legendItem.index;
+            //     var chart = this.chart;
+            //     var i, ilen, meta;
+
+            //     for (
+            //       i = 0, ilen = (chart.data.datasets || []).length;
+            //       i < ilen;
+            //       ++i
+            //     ) {
+            //       meta = chart.getDatasetMeta(i);
+            //       // toggle visibility of index if exists
+            //       if (meta.data[index]) {
+            //         meta.data[index].hidden = !meta.data[index].hidden;
+            //       }
+            //     }
+
+            //     chart.update();
+            //   }
+            // }
           },
           tooltips: {
-            // 98683
             callbacks: {
               label: (tooltipItem, data) => {
                 return (
@@ -117,10 +116,13 @@ export default {
 
 .overlay {
   pointer-events: none;
-  max-width: 200px;
+  max-width: 180px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.chart {
+  z-index: 1;
 }
 </style>

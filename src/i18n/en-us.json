@@ -9,7 +9,7 @@
   "dataPerCountry": "Data per country",
   "deaths": "Deaths",
   "failed": "Action failed",
-  "fatality": "Fatality",
+  "mortality": "Mortality",
   "fullscreen": "Fullscreen",
   "healed": "Healed",
   "nothingHere": "Sorry, nothing here",
@@ -24,5 +24,6 @@
   "totals": "Totals",
   "totalTooltip": "The data is updated every 15 min",
   "Tracker": "Tracker",
-  "unknown": "Unknown"
+  "unknown": "Unknown",
+  "todaysIncrement": "Today's increment"
 }

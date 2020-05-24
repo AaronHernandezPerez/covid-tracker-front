@@ -9,7 +9,7 @@
   "dataPerCountry": "Datos por países",
   "deaths": "Muertes",
   "failed": "Acción fallida",
-  "fatality": "Fatalidad",
+  "mortality": "Mortalidad",
   "fullscreen": "Pantalla completa",
   "healed": "Curados",
   "nothingHere": "Disculpa, aquí no hay nada",
@@ -24,5 +24,6 @@
   "totals": "Totales",
   "totalTooltip": "Los datos se actualizan cada 15 min",
   "Tracker": "Tracker",
-  "unknown": "No disponible"
+  "unknown": "No disponible",
+  "todaysIncrement": "El incremento de hoy"
 }

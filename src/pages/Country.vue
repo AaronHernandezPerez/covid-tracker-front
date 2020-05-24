@@ -129,8 +129,8 @@ export default {
             label: "deathRatio",
             data: [this.countryData.cases, this.countryData.deaths],
             backgroundColor: [
-              "rgba(22, 106, 189, 0.6)",
-              "rgba(229, 57, 53, 0.6)"
+              "rgba(22, 106, 189, 0.8)",
+              "rgba(229, 57, 53, 0.8)"
             ],
             borderColor: ["rgb(22, 106, 189)", "rgb(229, 57, 53)"]
           },
@@ -142,7 +142,7 @@ export default {
                 this.countryData.cases
               ).toFixed(2) + "%"
             ).replace(".", ","),
-            text: this.$t("fatality")
+            text: this.$t("mortality")
           }
         };
 
@@ -151,8 +151,8 @@ export default {
             label: "recoveredRatio",
             data: [this.countryData.cases, this.countryData.recovered],
             backgroundColor: [
-              "rgba(22, 106, 189, 0.6)",
-              "rgba(56, 142, 60, 0.6)"
+              "rgba(22, 106, 189, 0.8)",
+              "rgba(56, 142, 60, 0.8)"
             ],
             borderColor: ["rgb(22, 106, 189)", "rgb(56, 142, 60)"]
           },
@@ -179,11 +179,11 @@ export default {
               this.countryData.recoveredPerOneMillion
             ],
             backgroundColor: [
-              "rgba(22, 106, 189, 0.6)",
-              "rgba(229, 57, 53,0.6)",
-              "rgba(251, 140, 0, 0.6)",
-              "rgba(251, 192, 45,0.6)",
-              "rgba(56, 142, 60, 0.6)"
+              "rgba(22, 106, 189, 0.8)",
+              "rgba(229, 57, 53,0.8)",
+              "rgba(251, 140, 0, 0.8)",
+              "rgba(251, 192, 45,0.8)",
+              "rgba(56, 142, 60, 0.8)"
             ],
             borderColor: [
               "rgb(22, 106, 189)",

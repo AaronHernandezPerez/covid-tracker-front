@@ -48,6 +48,38 @@
           </q-td>
         </template>
 
+        <template v-slot:body-cell-confirmed="props">
+          <q-td :props="props" auto-width>
+            <div>{{props.value}}</div>
+            <div class="sub-text">
+              + {{props.row.todayCases | formatNumberDot}}
+              <q-tooltip
+                anchor="top middle"
+                self="center middle"
+                content-style="font-size: 12px"
+                content-class="bg-black"
+                delay="500"
+              >{{$t('todaysIncrement')}}</q-tooltip>
+            </div>
+          </q-td>
+        </template>
+
+        <template v-slot:body-cell-deaths="props">
+          <q-td :props="props" auto-width>
+            <div>{{props.value}}</div>
+            <div v-if="props.row.todayDeaths" class="sub-text">
+              + {{props.row.todayDeaths | formatNumberDot}}
+              <q-tooltip
+                anchor="top middle"
+                self="center middle"
+                content-style="font-size: 12px"
+                content-class="bg-black"
+                delay="500"
+              >{{$t('todaysIncrement')}}</q-tooltip>
+            </div>
+          </q-td>
+        </template>
+
         <template v-slot:body-cell-country="props">
           <q-td :props="props">
             <div class="flex items-center">
@@ -241,5 +273,9 @@ export default {
 
 .q-table--dense .q-table__bottom {
   min-height: auto;
+}
+
+.sub-text {
+  font-size: 0.7rem;
 }
 </style>
