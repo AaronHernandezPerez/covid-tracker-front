@@ -84,8 +84,8 @@ export default {
           label: "Tracker",
           route: "/",
           separator: false
-        },
-        { icon: "inbox", label: "Test", route: "/test", separator: false }
+        }
+        // { icon: "inbox", label: "Test", route: "/test", separator: false }
       ],
       drawerLeft: false
     };
