@@ -1,4 +1,6 @@
 import axios from 'axios';
+import i18nCountries from "i18n-iso-countries";
+import Vue from 'vue';
 
 const state = {
   world: null,
@@ -16,7 +18,7 @@ const mutations = {
   },
   parseReport: (state, data) => {
     state.world = data[0].data;
-    state.countries = data[1].data.filter(e => e.countryInfo.iso2 !== null)
+    state.countries = data[1].data;
   }
 };
 
@@ -28,6 +30,16 @@ const actions = {
       axios.get('https://corona.lmao.ninja/v2/all'),
       axios.get('https://corona.lmao.ninja/v2/countries?sort=country/countries')
     ]);
+
+    // Parsing data
+    response[1].data = response[1].data.filter(e => e.countryInfo.iso2 !== null);
+    response[1].data.forEach(e => {
+      e.countryInfo.iso2 = e.countryInfo.iso2.toLowerCase();
+      // Adding language translations
+      Vue.prototype.$supportedLanguages.forEach(lang => {
+        e.countryInfo[lang] = i18nCountries.getName(e.countryInfo.iso2, lang).split(',').shift().split(' (').shift();
+      });
+    });
 
     commit('parseReport', response);
   },

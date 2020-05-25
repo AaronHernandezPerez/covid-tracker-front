@@ -48,17 +48,26 @@
           </q-td>
         </template>
 
+        <template v-slot:body-cell-country="props">
+          <q-td :props="props">
+            <div class="flex items-center">
+              <gb-flag class="c-flag q-mr-sm" :code="props.row.countryInfo.iso2" />
+              {{props.value}}
+            </div>
+          </q-td>
+        </template>
+
         <template v-slot:body-cell-confirmed="props">
           <q-td :props="props" auto-width>
             <div>{{props.value}}</div>
-            <div class="sub-text">
+            <div v-if="props.row.todayDeaths" class="sub-text">
               + {{props.row.todayCases | formatNumberDot}}
               <q-tooltip
                 anchor="top middle"
                 self="center middle"
                 content-style="font-size: 12px"
                 content-class="bg-black"
-                delay="500"
+                :delay="500"
               >{{$t('todaysIncrement')}}</q-tooltip>
             </div>
           </q-td>
@@ -74,17 +83,8 @@
                 self="center middle"
                 content-style="font-size: 12px"
                 content-class="bg-black"
-                delay="500"
+                :delay="500"
               >{{$t('todaysIncrement')}}</q-tooltip>
-            </div>
-          </q-td>
-        </template>
-
-        <template v-slot:body-cell-country="props">
-          <q-td :props="props">
-            <div class="flex items-center">
-              <gb-flag class="c-flag q-mr-sm" :code="props.row.countryInfo.iso2" />
-              {{props.row.countryInfo.iso2 | translateCountry2}}
             </div>
           </q-td>
         </template>
@@ -154,13 +154,14 @@ export default {
         page: 1,
         rowsPerPage: 25 // current rows per page being displayed
       },
+
       columns: [
         { name: "actions", label: "", field: "", align: "center" },
         {
           name: "country",
           align: "left",
           label: this.$t("country"),
-          field: "country",
+          field: row => row.countryInfo[this.$language],
           sortable: true,
           classes: "name-col",
           style: "font-size:18px",
@@ -211,17 +212,6 @@ export default {
           format: val => this.formatOrUnknown(val)
         },
         {
-          name: "tests",
-          align: "left",
-          label: this.$t("tests"),
-          field: "tests",
-          sortable: true,
-          classes: "text-cyan",
-          style: "font-size:18px",
-          headerStyle: "font-size:20px",
-          format: val => this.formatOrUnknown(val)
-        },
-        {
           name: "recovered",
           align: "left",
           label: this.$t("recovered"),
@@ -236,6 +226,17 @@ export default {
             }
             return this.formatOrUnknown(val);
           }
+        },
+        {
+          name: "tests",
+          align: "left",
+          label: this.$t("tests"),
+          field: "tests",
+          sortable: true,
+          classes: "text-cyan",
+          style: "font-size:18px",
+          headerStyle: "font-size:20px",
+          format: val => this.formatOrUnknown(val)
         }
       ]
     };
@@ -271,11 +272,14 @@ export default {
   cursor: text;
 }
 
-.q-table--dense .q-table__bottom {
-  min-height: auto;
-}
-
 .sub-text {
   font-size: 0.7rem;
+}
+</style>
+
+
+<style lang="scss">
+.q-table--dense .q-table__bottom {
+  min-height: auto;
 }
 </style>

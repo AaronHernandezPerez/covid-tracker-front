@@ -55,14 +55,19 @@ export default async () => {
   try {
     // quasar
     const language = getClosestTranslation();
+    Vue.prototype.$supportedLanguages = ['en', 'es']
     Vue.prototype.$parsedLocale = language;
+    Vue.prototype.$language = language.split('-').shift();
 
     await import(
       'quasar/lang/' + language
     )
       .then(lang => {
         Quasar.lang.set(lang.default)
-      })
+      }).catch(error => {
+        console.error('Cant find qLang for', language);
+        Quasar.lang.set(import('quasar/lang/en-us').default)
+      });
   }
   catch (err) {
     // Requested Quasar Language Pack does not exist,

@@ -19,6 +19,19 @@ export default {
   },
   created() {
     this.fetchReport();
+
+    // Specific language changes for meta
+    switch (this.$language) {
+      case "en":
+        // console.log("The page is in English");
+        break;
+      case "es":
+        // console.log("La página está en Español");
+        break;
+
+      default:
+        break;
+    }
   },
   mounted: function() {
     this.polling = setInterval(() => {

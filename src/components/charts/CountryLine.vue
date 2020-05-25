@@ -96,10 +96,18 @@ export default {
   },
   props: ["data"],
   methods: {
+    cleanDatasets() {
+      this.chartOptions.data.datasets.forEach(e => {
+        e.data = [];
+      });
+    },
     parseData(response) {
       if (!response) {
         return;
       }
+
+      this.cleanDatasets();
+
       let data = response.timeline;
 
       for (const key in data.cases) {

@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <div class="text-center text-h2 q-mb-md">
+    <div v-if="countryName" class="text-center text-h2 q-mb-md">
       <gb-flag class="c-flag q-mr-sm" :code="$route.params.id" />
       {{countryName}}
     </div>
@@ -10,42 +10,42 @@
           <q-badge align="middle" color="blue-7 full-width">
             <div
               class="text-h6 text-center full-width"
-            >{{$t('confirmed')}}: {{countryData.cases | formatNumberDot}}</div>
+            >{{$t('confirmed')}}: {{countryData.cases | filterFunc(formatOrUnknown)}}</div>
           </q-badge>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg">
           <q-badge align="middle" color="red-7 full-width">
             <div
               class="text-h6 text-center full-width"
-            >{{$t('deaths')}}: {{countryData.deaths | formatNumberDot}}</div>
+            >{{$t('deaths')}}: {{countryData.deaths | filterFunc(formatOrUnknown)}}</div>
           </q-badge>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg">
           <q-badge align="middle" color="orange-7 full-width">
             <div
               class="text-h6 text-center full-width"
-            >{{$t('critical')}}: {{countryData.critical | formatNumberDot}}</div>
+            >{{$t('critical')}}: {{countryData.critical | filterFunc(formatOrUnknown)}}</div>
           </q-badge>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg">
           <q-badge align="middle" color="yellow-7 text-black full-width">
             <div
               class="text-h6 text-center full-width"
-            >{{$t('actives')}}: {{countryData.active | formatNumberDot}}</div>
+            >{{$t('actives')}}: {{countryData.active | filterFunc(formatOrUnknown)}}</div>
           </q-badge>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg">
           <q-badge align="middle" color="green-7 full-width">
             <div
               class="text-h6 text-center full-width"
-            >{{$t('recovered')}}: {{countryData.recovered | formatNumberDot}}</div>
+            >{{$t('recovered')}}: {{countryData.recovered | filterFunc(formatOrUnknown)}}</div>
           </q-badge>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg">
           <q-badge align="middle" color="cyan full-width">
             <div
               class="text-h6 text-center full-width"
-            >{{$t('tests')}}: {{countryData.tests | formatNumberDot}}</div>
+            >{{$t('tests')}}: {{countryData.tests | filterFunc(formatOrUnknown)}}</div>
           </q-badge>
         </div>
       </div>
@@ -116,137 +116,157 @@ export default {
   },
   methods: {
     findCountry() {
-      if (this.countries) {
-        this.countryData = this.countries.find(
-          e => e.countryInfo.iso2 === this.$route.params.id
-        );
-
-        /* Pie statistics */
-
-        // DeathRatio statistic
-        this.deathRatio = {
-          data: {
-            label: "deathRatio",
-            data: [this.countryData.cases, this.countryData.deaths],
-            backgroundColor: [
-              "rgba(22, 106, 189, 0.8)",
-              "rgba(229, 57, 53, 0.8)"
-            ],
-            borderColor: ["rgb(22, 106, 189)", "rgb(229, 57, 53)"]
-          },
-          labels: [this.$t("confirmed"), this.$t("deaths")],
-          overlay: {
-            title: (
-              (
-                (this.countryData.deaths * 100) /
-                this.countryData.cases
-              ).toFixed(2) + "%"
-            ).replace(".", ","),
-            text: this.$t("mortality")
-          }
-        };
-
-        this.recoveredRatio = {
-          data: {
-            label: "recoveredRatio",
-            data: [this.countryData.cases, this.countryData.recovered],
-            backgroundColor: [
-              "rgba(22, 106, 189, 0.8)",
-              "rgba(56, 142, 60, 0.8)"
-            ],
-            borderColor: ["rgb(22, 106, 189)", "rgb(56, 142, 60)"]
-          },
-          labels: [this.$t("confirmed"), this.$t("recovered")],
-          overlay: {
-            title: (
-              (
-                (this.countryData.recovered * 100) /
-                this.countryData.cases
-              ).toFixed(2) + "%"
-            ).replace(".", ","),
-            text: this.$t("healed")
-          }
-        };
-
-        this.perMillionRatio = {
-          data: {
-            label: "perMillionRatio",
-            data: [
-              this.countryData.casesPerOneMillion,
-              this.countryData.deathsPerOneMillion,
-              this.countryData.criticalPerOneMillion,
-              this.countryData.activePerOneMillion,
-              this.countryData.recoveredPerOneMillion
-            ],
-            backgroundColor: [
-              "rgba(22, 106, 189, 0.8)",
-              "rgba(229, 57, 53,0.8)",
-              "rgba(251, 140, 0, 0.8)",
-              "rgba(251, 192, 45,0.8)",
-              "rgba(56, 142, 60, 0.8)"
-            ],
-            borderColor: [
-              "rgb(22, 106, 189)",
-              "rgb(229, 57, 53)",
-              "rgb(251, 140, 0)",
-              "rgb(251, 192, 45)",
-              "rgb(56, 142, 60)"
-            ]
-          },
-          labels: [
-            `${this.$t("confirmed")} ${this.$t("perMillion")}`,
-            `${this.$t("deaths")} ${this.$t("perMillion")}`,
-            `${this.$t("critical")} ${this.$t("perMillion")}`,
-            `${this.$t("actives")} ${this.$t("perMillion")}`,
-            `${this.$t("recovered")} ${this.$t("perMillion")}`
-          ],
-          overlay: {
-            title: (
-              (
-                (this.countryData.cases * 100) /
-                this.countryData.population
-              ).toFixed(2) + "%"
-            ).replace(".", ","),
-            text: this.$t("percentagePopulation"),
-            textClass: "text-h6"
-          }
-        };
-
-        this.pieData = true;
+      if (!this.countries) {
+        return this.toHome();
       }
+
+      this.countryName = this.$options.filters.translateCountry2(
+        this.$route.params.id
+      );
+
+      this.countryData = this.countries.find(
+        e => e.countryInfo.iso2 === this.$route.params.id.toLowerCase()
+      );
+
+      if (!this.countryName || !this.countryData) {
+        return this.toHome();
+      }
+
+      // Line chart
+      const diffDays = moment().diff(
+        moment("01-01-2020", "DD-MM-YYYY"),
+        "days"
+      );
+      axios
+        .get("https://disease.sh/v2/historical/" + this.$route.params.id, {
+          params: {
+            lastdays: diffDays
+          }
+        })
+        .then(response => {
+          this.lineData = response.data;
+        })
+        .catch(error => {
+          console.error("No timeline");
+        });
+
+      /* Pie statistics */
+
+      // DeathRatio statistic
+      this.deathRatio = {
+        data: {
+          label: "deathRatio",
+          data: [this.countryData.cases, this.countryData.deaths],
+          backgroundColor: [
+            "rgba(22, 106, 189, 0.8)",
+            "rgba(229, 57, 53, 0.8)"
+          ],
+          borderColor: ["rgb(22, 106, 189)", "rgb(229, 57, 53)"]
+        },
+        labels: [this.$t("confirmed"), this.$t("deaths")],
+        overlay: {
+          title: (
+            ((this.countryData.deaths * 100) / this.countryData.cases).toFixed(
+              2
+            ) + "%"
+          ).replace(".", ","),
+          text: this.$t("mortality")
+        }
+      };
+
+      this.recoveredRatio = {
+        data: {
+          label: "recoveredRatio",
+          data: [this.countryData.cases, this.countryData.recovered],
+          backgroundColor: [
+            "rgba(22, 106, 189, 0.8)",
+            "rgba(56, 142, 60, 0.8)"
+          ],
+          borderColor: ["rgb(22, 106, 189)", "rgb(56, 142, 60)"]
+        },
+        labels: [this.$t("confirmed"), this.$t("recovered")],
+        overlay: {
+          title: (
+            (
+              (this.countryData.recovered * 100) /
+              this.countryData.cases
+            ).toFixed(2) + "%"
+          ).replace(".", ","),
+          text: this.$t("healed")
+        }
+      };
+
+      this.perMillionRatio = {
+        data: {
+          label: "perMillionRatio",
+          data: [
+            this.countryData.casesPerOneMillion,
+            this.countryData.deathsPerOneMillion,
+            this.countryData.criticalPerOneMillion,
+            this.countryData.activePerOneMillion,
+            this.countryData.recoveredPerOneMillion
+          ],
+          backgroundColor: [
+            "rgba(22, 106, 189, 0.8)",
+            "rgba(229, 57, 53,0.8)",
+            "rgba(251, 140, 0, 0.8)",
+            "rgba(251, 192, 45,0.8)",
+            "rgba(56, 142, 60, 0.8)"
+          ],
+          borderColor: [
+            "rgb(22, 106, 189)",
+            "rgb(229, 57, 53)",
+            "rgb(251, 140, 0)",
+            "rgb(251, 192, 45)",
+            "rgb(56, 142, 60)"
+          ]
+        },
+        labels: [
+          `${this.$t("confirmed")} ${this.$t("perMillion")}`,
+          `${this.$t("deaths")} ${this.$t("perMillion")}`,
+          `${this.$t("critical")} ${this.$t("perMillion")}`,
+          `${this.$t("actives")} ${this.$t("perMillion")}`,
+          `${this.$t("recovered")} ${this.$t("perMillion")}`
+        ],
+        overlay: {
+          title: (
+            (
+              (this.countryData.cases * 100) /
+              this.countryData.population
+            ).toFixed(2) + "%"
+          ).replace(".", ","),
+          text: this.$t("percentagePopulation"),
+          textClass: "text-h6"
+        }
+      };
+
+      this.pieData = true;
+    },
+    toHome() {
+      this.$destroy();
+      this.$router.replace("/");
+    },
+    formatOrUnknown(val) {
+      if (!val) {
+        return this.$t("unknown");
+      }
+
+      return this.$options.filters.formatNumberDot(val);
     }
   },
   computed: {
     ...mapState("novelCOVID", ["countries"])
   },
-  created() {
-    this.countryName = this.$options.filters.translateCountry2(
-      this.$route.params.id
-    );
-  },
   mounted() {
-    if (!this.countryName) {
-      this.$destroy();
-      return this.$router.push("/");
+    if (this.countries) {
+      this.findCountry();
     }
-
-    // Country data
-    this.findCountry();
-
-    // Line chart
-    const diffDays = moment().diff(moment("01-01-2020", "DD-MM-YYYY"), "days");
-    axios
-      .get("https://disease.sh/v2/historical/" + this.$route.params.id, {
-        params: {
-          lastdays: diffDays
-        }
-      })
-      .then(response => {
-        this.lineData = response.data;
-      });
   },
   watch: {
     countries(newVal) {
+      this.findCountry();
+    },
+    $route(to, from) {
       this.findCountry();
     }
   },
