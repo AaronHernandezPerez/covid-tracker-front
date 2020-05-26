@@ -1,13 +1,11 @@
 <template>
   <div ref="divContainer">
     <q-btn
-      dense
-      flat
+      outline
       :ripple="false"
       :label="formatedApplauses"
       @click="clap()"
       icon="fas fa-hands-wash"
-      size="19px"
       color="cyan"
       class="q-mr-sm clap"
       no-caps
@@ -89,5 +87,19 @@ export default {
   transition-duration: 0.1s;
   transition-timing-function: ease;
   transition-delay: 0s;
+}
+</style>
+
+<style lang="scss">
+#q-app
+  > div
+  > header
+  > div.q-toolbar.row.no-wrap.items-center.items-stretch.q-py-sm.q-px-md
+  > div.q-pl-sm.q-gutter-sm.flex.items-center
+  > div
+  > button.clap
+  > span.q-focus-helper {
+  z-index: 2;
+  display: none;
 }
 </style>

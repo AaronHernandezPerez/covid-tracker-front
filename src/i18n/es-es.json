@@ -5,13 +5,14 @@
   "confirmed": "Confirmados",
   "confirmedCases": "Casos confirmados",
   "country": "País",
-  "critical": "Criticos",
+  "critical": "Críticos",
   "dataPerCountry": "Datos por países",
   "deaths": "Muertes",
+  "donateTxt": "Invítame a un Café",
   "failed": "Acción fallida",
-  "mortality": "Mortalidad",
   "fullscreen": "Pantalla completa",
   "healed": "Curados",
+  "mortality": "Mortalidad",
   "nothingHere": "Disculpa, aquí no hay nada",
   "percentagePopulation": "De la población ha tenido el virus",
   "perMillion": "por millón",
@@ -21,9 +22,9 @@
   "success": "Acción completada con éxito",
   "tests": "Tests",
   "timeline": "Cronología",
+  "todaysIncrement": "El incremento de hoy",
   "totals": "Totales",
   "totalTooltip": "Los datos se actualizan cada 15 min",
   "Tracker": "Tracker",
-  "unknown": "No disponible",
-  "todaysIncrement": "El incremento de hoy"
+  "unknown": "No disponible"
 }

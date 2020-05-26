@@ -8,10 +8,11 @@
   "critical": "Critical",
   "dataPerCountry": "Data per country",
   "deaths": "Deaths",
+  "donateTxt": "Buy me a Coffee",
   "failed": "Action failed",
-  "mortality": "Mortality",
   "fullscreen": "Fullscreen",
   "healed": "Healed",
+  "mortality": "Mortality",
   "nothingHere": "Sorry, nothing here",
   "percentagePopulation": "Of the population has had the virus",
   "perMillion": "per million",
@@ -21,9 +22,9 @@
   "success": "Action was successful",
   "tests": "Tests",
   "timeline": "Timeline",
+  "todaysIncrement": "Today's increment",
   "totals": "Totals",
   "totalTooltip": "The data is updated every 15 min",
   "Tracker": "Tracker",
-  "unknown": "Unknown",
-  "todaysIncrement": "Today's increment"
+  "unknown": "Unknown"
 }

@@ -1,8 +1,8 @@
 <template>
   <q-layout>
     <q-header elevated class="text-white" style="background: #24292e" height-hint="61.59">
-      <q-toolbar class="q-py-sm q-px-md">
-        <q-btn
+      <q-toolbar class="items-stretch q-py-sm q-px-md">
+        <!-- <q-btn
           v-if="$q.screen.lt.md"
           flat
           @click="drawerLeft = !drawerLeft"
@@ -10,18 +10,12 @@
           dense
           icon="menu"
           class="q-mr-md"
-        />
-        <q-btn
-          dense
-          flat
-          :ripple="false"
-          icon="fas fa-lungs-virus"
-          size="19px"
-          color="white"
-          class="q-mr-sm q-pa-xs"
-          no-caps
-          to="/"
-        ></q-btn>
+        />-->
+        <router-link class="title text-center" to="/">
+          <div class="flex items-center justify-center">
+            <q-icon name="img:statics/isolated_trimed.svg" color="red" />Status Covid
+          </div>
+        </router-link>
 
         <div
           v-if="$q.screen.gt.sm"
@@ -36,10 +30,10 @@
 
         <q-space />
 
-        <div class="q-pl-sm q-gutter-sm flex items-center no-wrap">
+        <div class="q-pl-sm q-gutter-sm flex items-center">
           <ApplauseBtn />
 
-          <q-btn flat dense size="19px" icon="monetization_on" label="Give me money" />
+          <Ko-fi-btn />
         </div>
       </q-toolbar>
     </q-header>
@@ -74,17 +68,19 @@
 
 <script>
 import ApplauseBtn from "src/components/ApplauseBtn";
+import KoFiBtn from "src/components/KoFiBtn";
+
 export default {
   name: "MyLayout",
   data() {
     return {
       menus: [
-        {
-          icon: "fas fa-chart-line",
-          label: "Tracker",
-          route: "/",
-          separator: false
-        }
+        // {
+        //   icon: "fas fa-chart-line",
+        //   label: "Tracker",
+        //   route: "/",
+        //   separator: false
+        // }
         // { icon: "inbox", label: "Test", route: "/test", separator: false }
       ],
       drawerLeft: false
@@ -96,7 +92,8 @@ export default {
     }
   },
   components: {
-    ApplauseBtn
+    ApplauseBtn,
+    KoFiBtn
   }
 };
 </script>
@@ -127,5 +124,26 @@ export default {
     }
   }
 }
-//
+
+.title {
+  font-size: 3em;
+  text-decoration: none;
+  color: white;
+
+  // &:active {
+  //   color: lightgray;
+  // }
+
+  // img {
+  //   display: none;
+  // }
+}
+
+@media (min-width: 680px) {
+  .title img {
+    display: block;
+
+    margin-right: 0.25em;
+  }
+}
 </style>
