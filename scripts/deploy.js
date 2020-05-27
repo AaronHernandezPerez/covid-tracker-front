@@ -28,4 +28,5 @@ try {
   console.log('No changes detected, nothing commited');
 }
 
+process.chdir('../');
 fs.rmdirSync(dir, { recursive: true });
