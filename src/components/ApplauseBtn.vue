@@ -25,7 +25,7 @@
 <script>
 import Vue from "vue";
 import { mapState, mapActions } from "vuex";
-import PlusOneFade from "src/components/PlusOnefade";
+import PlusOneFade from "src/components/PlusOneFade";
 
 export default {
   data() {
