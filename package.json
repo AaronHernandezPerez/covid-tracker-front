@@ -1,6 +1,6 @@
 {
   "name": "covid-tracker-front",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Covid-19 tracker Status Covid. Monitor the spread of the coronavirus pandemic in real time by country with cases, deaths, critical, recovered, tests realized, and much more!",
   "productName": "Coronavirus Tracker | Status Covid",
   "cordovaId": "org.cordova.quasar.app",
