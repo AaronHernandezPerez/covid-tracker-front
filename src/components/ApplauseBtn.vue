@@ -7,7 +7,7 @@
       @click="clap()"
       icon="fas fa-hands-wash"
       color="cyan"
-      class="q-mr-sm clap"
+      class="clap"
       no-caps
       style="min-width: 150px;"
     >

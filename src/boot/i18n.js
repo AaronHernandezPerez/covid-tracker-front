@@ -9,6 +9,7 @@ export default async ({ app, Vue }) => {
   // Countries i18n
   i18nCountries.registerLocale(require("i18n-iso-countries/langs/en.json"));
   i18nCountries.registerLocale(require("i18n-iso-countries/langs/es.json"));
+  i18nCountries.registerLocale(require("i18n-iso-countries/langs/ca.json"));
 
   // Moment
   moment.locale(Quasar.lang.getLocale())

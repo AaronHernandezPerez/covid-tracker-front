@@ -10,7 +10,8 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      polling: null
+      polling: null,
+      description: this.$t("description")
     };
   },
   name: "App",
@@ -26,7 +27,7 @@ export default {
         // console.log("The page is in English");
         break;
       case "es":
-        // console.log("La página está en Español");
+        document.getElementsByName("description")[0].content = this.description;
         break;
 
       default:

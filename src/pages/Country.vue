@@ -1,9 +1,9 @@
 <template>
   <q-page padding>
-    <div v-if="countryName" class="text-center text-h2 q-mb-md">
+    <h1 v-if="countryName" class="text-center q-mb-md text-h2">
       <gb-flag class="c-flag q-mr-sm" :code="$route.params.id" />
       {{countryName}}
-    </div>
+    </h1>
     <div class>
       <div v-if="countryData" class="row q-col-gutter-md q-mb-md">
         <div class="col-12 col-sm-6 col-md-4 col-lg">
@@ -273,6 +273,12 @@ export default {
   components: {
     CountryLine,
     StatisticPie
+  },
+  metaInfo() {
+    return {
+      title: this.countryName,
+      titleTemplate: "%s | Status Covid"
+    };
   }
 };
 </script>

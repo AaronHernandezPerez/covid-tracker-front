@@ -8,7 +8,7 @@
   "critical": "Críticos",
   "dataPerCountry": "Datos por países",
   "deaths": "Muertes",
-  "donateTxt": "Invítame a un Café",
+  "donateTxt": "¡Invítame a un Café!",
   "failed": "Acción fallida",
   "fullscreen": "Pantalla completa",
   "healed": "Curados",
@@ -26,5 +26,9 @@
   "totals": "Totales",
   "totalTooltip": "Los datos se actualizan cada 15 min",
   "Tracker": "Tracker",
-  "unknown": "No disponible"
+  "unknown": "No disponible",
+  "description": "Covid-19 tracker Status Covid. Monitoriza el avance de la pandemia del coronavirus en tiempo real por país con los casos, fallecidos, pacientes en estado crítico, recuperados, tests ¡Y mucho más!",
+  "indexH1": "Status Covid sigue las estadísticas de la pandemia del corona virus con datos en tiempo real",
+  "page": "Página",
+  "of": "de"
 }

@@ -1,13 +1,13 @@
 <template>
-  <router-link class="router-link" :to="`/country/${country}`" target="_blank">
+  <router-link class="router-link" :to="`/country/${country}`">
     <q-btn
       dense
       round
       flat
       color="accent"
       :icon="(hovered) ? 'add_circle' :'add_circle_outline'"
-      @mouseenter="hovered=true"
-      @mouseleave="hovered=false"
+      @mouseover="hovered=true"
+      @mouseout="hovered=false"
     ></q-btn>
   </router-link>
 </template>
@@ -20,6 +20,11 @@ export default {
     return {
       hovered: false
     };
+  },
+  watch: {
+    $route(to, from) {
+      this.hovered = false;
+    }
   }
 };
 </script>

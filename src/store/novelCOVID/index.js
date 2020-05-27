@@ -37,7 +37,7 @@ const actions = {
       e.countryInfo.iso2 = e.countryInfo.iso2.toLowerCase();
       // Adding language translations
       Vue.prototype.$supportedLanguages.forEach(lang => {
-        e.countryInfo[lang] = i18nCountries.getName(e.countryInfo.iso2, lang).split(',').shift().split(' (').shift();
+        e.countryInfo[lang] = i18nCountries.getName(e.countryInfo.iso2, lang).split(',').shift().split(' (').shift().split(' (').shift();
       });
     });
 

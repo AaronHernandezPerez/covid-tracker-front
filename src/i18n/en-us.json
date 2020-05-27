@@ -8,7 +8,7 @@
   "critical": "Critical",
   "dataPerCountry": "Data per country",
   "deaths": "Deaths",
-  "donateTxt": "Buy me a Coffee",
+  "donateTxt": "Buy me a Coffee!",
   "failed": "Action failed",
   "fullscreen": "Fullscreen",
   "healed": "Healed",
@@ -26,5 +26,9 @@
   "totals": "Totals",
   "totalTooltip": "The data is updated every 15 min",
   "Tracker": "Tracker",
-  "unknown": "Unknown"
+  "unknown": "Unknown",
+  "description": "Covid-19 tracker Status Covid. Monitor the spread of the coronavirus pandemic in real time by country with cases, deaths, critical, recovered, tests realized, and much more!",
+  "indexH1": "Status Covid corona virus pandemic tracker statistics in real time",
+  "page": "Page",
+  "of": "de"
 }

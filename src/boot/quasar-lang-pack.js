@@ -55,7 +55,7 @@ export default async () => {
   try {
     // quasar
     const language = getClosestTranslation();
-    Vue.prototype.$supportedLanguages = ['en', 'es']
+    Vue.prototype.$supportedLanguages = ['en', 'es', 'ca']
     Vue.prototype.$parsedLocale = language;
     Vue.prototype.$language = language.split('-').shift();
 

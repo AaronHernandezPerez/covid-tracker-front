@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Meta from 'vue-meta'
-
 import routes from './routes'
 
 Vue.use(VueRouter)
@@ -18,9 +17,8 @@ Vue.use(Meta)
 
 export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
-    scrollBehavior: () => ({ x: 0, y: 0 }),
+    // scrollBehavior: () => ({ x: 0, y: 0 }), // always goes to top
     routes,
-
     // Leave these as they are and change in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath

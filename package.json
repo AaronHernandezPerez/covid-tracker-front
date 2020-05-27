@@ -1,8 +1,8 @@
 {
   "name": "covid-tracker-front",
   "version": "0.0.1",
-  "description": "Covid tracker",
-  "productName": "Coronavirus tracker",
+  "description": "Covid-19 tracker Status Covid. Monitor the spread of the coronavirus pandemic in real time by country with cases, deaths, critical, recovered, tests realized, and much more!",
+  "productName": "Coronavirus Tracker | Status Covid",
   "cordovaId": "org.cordova.quasar.app",
   "capacitorId": "",
   "author": "Aaron <aaronhperez@gmail.com>",
@@ -10,7 +10,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ./",
     "test": "echo \"No test specified\" && exit 0",
-    "vue-i18n-extract": "vue-i18n-extract"
+    "vue-i18n-extract": "vue-i18n-extract",
+    "build": "node scripts/deploy.js"
   },
   "dependencies": {
     "@growthbunker/vueflags": "^0.1.0",

@@ -30,10 +30,9 @@
 
         <q-space />
 
-        <div class="q-pl-sm q-gutter-sm flex items-center">
-          <ApplauseBtn />
-
-          <Ko-fi-btn />
+        <div class="q-pl-sm q-gutter-sm flex items-center justify-center">
+          <ApplauseBtn class="q-mr-sm" />
+          <Ko-fi-btn class="q-mr-sm" />
         </div>
       </q-toolbar>
     </q-header>
@@ -61,7 +60,9 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <keep-alive include="PageIndex">
+        <router-view />
+      </keep-alive>
     </q-page-container>
   </q-layout>
 </template>

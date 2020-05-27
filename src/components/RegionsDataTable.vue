@@ -90,18 +90,19 @@
         </template>
 
         <template v-slot:pagination="scope">
-          <!-- <q-btn
+          <div>{{$t('page')}} {{scope.pagination.page}} {{$t('of')}} {{scope.pagesNumber}}</div>
+          <q-btn
             v-if="scope.pagesNumber > 2"
             icon="first_page"
-            color="grey-8"
             round
             dense
             flat
             :disable="scope.isFirstPage"
-            @click="scope.firstPage"
-          />-->
+            @click="pagination.page=1"
+          />
 
           <q-btn
+            v-if="scope.pagesNumber > 1"
             icon="chevron_left"
             round
             dense
@@ -111,6 +112,7 @@
           />
 
           <q-btn
+            v-if="scope.pagesNumber > 1"
             icon="chevron_right"
             round
             dense
@@ -118,17 +120,15 @@
             :disable="scope.isLastPage"
             @click="scope.nextPage()"
           />
-
-          <!-- <q-btn
+          <q-btn
             v-if="scope.pagesNumber > 2"
             icon="last_page"
-            color="grey-8"
             round
             dense
             flat
             :disable="scope.isLastPage"
-            @click="scope.lastPage"
-          />-->
+            @click="pagination.page=scope.pagesNumber"
+          />
         </template>
       </q-table>
       <div v-else class="flex items-center justify-center q-pa-lg" style="font-size: 10em">
@@ -144,7 +144,7 @@ import { mapState } from "vuex";
 import PlusButton from "src/components/PlusButton";
 
 export default {
-  name: "TotalSummary",
+  name: "RegionsDataTable",
   data() {
     return {
       filter: "",

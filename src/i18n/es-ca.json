@@ -8,10 +8,11 @@
   "critical": "Crítics",
   "dataPerCountry": "Dades per països",
   "deaths": "Morts",
+  "donateTxt": "Convida'm a un cafè!",
   "failed": "Acció fallida",
-  "mortality": "Mortalitat",
   "fullscreen": "Pantalla completa",
   "healed": "Curats",
+  "mortality": "Mortalitat",
   "nothingHere": "Disculpa, aquí no hi ha res",
   "percentagePopulation": "De la població ha tingut el virus",
   "perMillion": "per milió",
@@ -21,9 +22,11 @@
   "success": "Acció completada amb èxit",
   "tests": "Tests",
   "timeline": "Cronologia",
+  "todaysIncrement": "L'increment d'avui",
   "totals": "Totals",
   "totalTooltip": "Les dades s'actualitzen cada 15 min",
   "Tracker": "Tracker",
   "unknown": "No disponible",
-  "todaysIncrement": "L'increment d'avui"
+  "page": "Pàgina",
+  "of": "de"
 }
