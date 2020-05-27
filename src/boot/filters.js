@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import { Quasar } from 'quasar'
 import i18nCountries from "i18n-iso-countries"
-import vueNumeralFilterInstaller from 'vue-numeral-filter';
+// import vueNumeralFilterInstaller from 'vue-numeral-filter';
 
-Vue.use(vueNumeralFilterInstaller, { locale: Vue.prototype.$parsedLocale });
+// Vue.use(vueNumeralFilterInstaller, { locale: Vue.prototype.$parsedLocale });
 
 Vue.filter('translateCountry2', function (value) {
   if (!value) return ''

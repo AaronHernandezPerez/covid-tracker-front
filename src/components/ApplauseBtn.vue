@@ -55,9 +55,7 @@ export default {
     ...mapState("claps", ["claps"]),
     formatedApplauses() {
       if (this.claps) {
-        return this.$options.filters
-          .numeral(this.claps, "0.00a")
-          .replace(".", ",");
+        return this.claps;
       } else {
         return "...";
       }

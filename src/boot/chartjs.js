@@ -1,3 +1,5 @@
+import Chart from 'chart.js';
+
 if (Chart) {
   Chart.defaults.LineWithLine = Chart.defaults.line;
   Chart.controllers.LineWithLine = Chart.controllers.line.extend({
@@ -25,5 +27,4 @@ if (Chart) {
   });
 } else {
   console.error('Chartjs not found');
-
 }

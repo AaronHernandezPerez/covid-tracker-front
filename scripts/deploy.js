@@ -28,5 +28,5 @@ try {
   console.log('No changes detected, nothing commited');
 }
 
-process.chdir('../');
+process.chdir('./../../');
 fs.rmdirSync(dir, { recursive: true });

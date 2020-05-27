@@ -20,9 +20,9 @@ export default {
   },
   created() {
     this.fetchReport();
-    if (this.$language != "en") {
-      document.getElementsByName("description")[0].content = this.description;
-    }
+    // if (this.$language != "en") {
+    //   document.getElementsByName("description")[0].content = this.description;
+    // }
   },
   mounted: function() {
     this.polling = setInterval(() => {

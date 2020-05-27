@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import moment from "moment";
+import Chart from "chart.js";
+
 export default {
   data() {
     return {
@@ -82,9 +85,7 @@ export default {
                 ticks: {
                   fontColor: "white",
                   callback: (label, index, labels) => {
-                    let numeral = this.$options.filters.numeral(label, "0.00a");
-                    const letter = numeral.substr(-1);
-                    return parseFloat(numeral) + letter;
+                    return label;
                   }
                 }
               }
