@@ -20,18 +20,8 @@ export default {
   },
   created() {
     this.fetchReport();
-
-    // Specific language changes for meta
-    switch (this.$language) {
-      case "en":
-        // console.log("The page is in English");
-        break;
-      case "es":
-        document.getElementsByName("description")[0].content = this.description;
-        break;
-
-      default:
-        break;
+    if (this.$language != "en") {
+      document.getElementsByName("description")[0].content = this.description;
     }
   },
   mounted: function() {
