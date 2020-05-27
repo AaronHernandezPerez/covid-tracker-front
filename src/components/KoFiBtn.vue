@@ -1,5 +1,5 @@
 <template>
-  <a class="link" href="https://ko-fi.com/aaronhp" target="_blank">
+  <a class="link" href="https://ko-fi.com/aaronhp" target="_blank" rel="noreferrer">
     <q-btn color="primary" no-caps>
       <img class="donate-icon q-mr-sm" src="https://storage.ko-fi.com/cdn/cup-border.png" />
       {{$t('donateTxt')}}
