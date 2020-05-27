@@ -15,9 +15,17 @@ Vue.use(Meta)
  * with the Router instance.
  */
 
+const savePositionRoutes = ['index']
+
 export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
-    // scrollBehavior: () => ({ x: 0, y: 0 }), // always goes to top
+    scrollBehavior: (to, from, savedPosition) => {
+      if (savedPosition && savePositionRoutes.includes(to.name)) {
+        return savedPosition
+      } else {
+        return { x: 0, y: 0 }
+      }
+    }, // always goes to top
     routes,
     // Leave these as they are and change in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
