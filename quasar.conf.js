@@ -7,6 +7,9 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+
 module.exports = function (/* ctx */) {
   return {
     // app boot file (/src/boot)
@@ -85,7 +88,7 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
 
       // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
@@ -106,7 +109,9 @@ module.exports = function (/* ctx */) {
           options: {
             formatter: require('eslint').CLIEngine.getFormatter('stylish'),
           }
-        })
+        });
+
+        cfg.plugins.push(new CopyWebpackPlugin([{ from: path.resolve(__dirname, '_redirects', './') }]))
       },
     },
 
@@ -147,16 +152,6 @@ module.exports = function (/* ctx */) {
           {
             src: 'statics/icons/icon-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'statics/icons/icon-256x256.png',
-            sizes: '256x256',
-            type: 'image/png'
-          },
-          {
-            src: 'statics/icons/icon-384x384.png',
-            sizes: '384x384',
             type: 'image/png'
           },
           {

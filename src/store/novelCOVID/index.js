@@ -32,14 +32,20 @@ const actions = {
     ]);
 
     // Parsing data
-    response[1].data = response[1].data.filter(e => e.countryInfo.iso2 !== null);
+    const parsedCountries = [];
+
     response[1].data.forEach(e => {
-      e.countryInfo.iso2 = e.countryInfo.iso2.toLowerCase();
-      // Adding language translations
-      Vue.prototype.$supportedLanguages.forEach(lang => {
-        e.countryInfo[lang] = i18nCountries.getName(e.countryInfo.iso2, lang).split(',').shift().split(' (').shift().split(' (').shift();
-      });
+      if (e.countryInfo.iso2) {
+        e.countryInfo.iso2 = e.countryInfo.iso2.toLowerCase();
+        // Adding language translations
+        Vue.prototype.$supportedLanguages.forEach(lang => {
+          e.countryInfo[lang] = i18nCountries.getName(e.countryInfo.iso2, lang).split(',').shift().split(' (').shift().split(' (').shift();
+        });
+        parsedCountries.push(e);
+      }
     });
+
+    response[1].data = parsedCountries;
 
     commit('parseReport', response);
   },
