@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import Chart from "chart.js";
+import moment from "moment";
+
 export default {
   data() {
     return {

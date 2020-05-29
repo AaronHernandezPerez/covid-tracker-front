@@ -2,6 +2,7 @@ import VueI18n from 'vue-i18n'
 import messages from 'src/i18n'
 import { Quasar } from 'quasar'
 
+import moment from 'moment';
 import i18nCountries from "i18n-iso-countries"
 
 

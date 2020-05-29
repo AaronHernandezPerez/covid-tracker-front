@@ -2,6 +2,8 @@
   <q-page padding>
     <div class="overflow-hidden max-w">
       <h1 class="seo-Title max-w">{{$t('indexH1')}}</h1>
+      <h2 class="seo-Title max-w">{{$t('indexH2')}}</h2>
+      <p class="seo-Title max-w">{{$t('indexP')}}</p>
     </div>
     <div class="row q-col-gutter-md">
       <div class="col-12 q-pb-md col-md-3">

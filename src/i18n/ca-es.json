@@ -8,12 +8,16 @@
   "critical": "Crítics",
   "dataPerCountry": "Dades per països",
   "deaths": "Morts",
+  "description": "Covid-19 tracker Estat Covid. Superviseu la propagació de la pandèmia de coronavirus en temps real per país amb casos, morts, crítiques, recuperacions, proves realitzades i molt més.",
   "donateTxt": "Convida'm a un cafè!",
   "failed": "Acció fallida",
   "fullscreen": "Pantalla completa",
   "healed": "Curats",
+  "indexH1": "Covid-19 tracker Estat Covid. Superviseu la propagació de la pandèmia de coronavirus en temps real per país amb casos, morts, crítiques, recuperacions, proves realitzades i molt mé",
   "mortality": "Mortalitat",
   "nothingHere": "Disculpa, aquí no hi ha res",
+  "of": "de",
+  "page": "Pàgina",
   "percentagePopulation": "De la població ha tingut el virus",
   "perMillion": "per milió",
   "recovered": "Recuperats",
@@ -26,9 +30,5 @@
   "totals": "Totals",
   "totalTooltip": "Les dades s'actualitzen cada 15 min",
   "Tracker": "Tracker",
-  "unknown": "No disponible",
-  "page": "Pàgina",
-  "of": "de",
-  "indexH1": "Covid-19 tracker Estat Covid. Superviseu la propagació de la pandèmia de coronavirus en temps real per país amb casos, morts, crítiques, recuperacions, proves realitzades i molt mé",
-  "description": "Covid-19 tracker Estat Covid. Superviseu la propagació de la pandèmia de coronavirus en temps real per país amb casos, morts, crítiques, recuperacions, proves realitzades i molt més."
+  "unknown": "No disponible"
 }
