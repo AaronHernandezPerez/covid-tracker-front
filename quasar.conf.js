@@ -111,7 +111,11 @@ module.exports = function (/* ctx */) {
           }
         });
 
-        cfg.plugins.push(new CopyWebpackPlugin([{ from: path.resolve(__dirname, '_redirects', './') }]))
+        cfg.plugins.push(new CopyWebpackPlugin([
+          { from: path.resolve(__dirname, 'src/_redirects', './') },
+          { from: path.resolve(__dirname, 'src/robots.txt', './') },
+          { from: path.resolve(__dirname, 'src/sitemap.xml', './') },
+        ]))
       },
     },
 
