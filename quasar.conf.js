@@ -7,46 +7,44 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const path = require("path");
 
-module.exports = function (/* ctx */) {
+module.exports = function(/* ctx */) {
   return {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
-      'quasar-lang-pack',
-      'i18n',
-      'filters',
-      'axios',
-      'vueFlags',
-      'chartjs'
+      "quasar-lang-pack",
+      "i18n",
+      "filters",
+      "axios",
+      "vueFlags",
+      "chartjs"
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
-    css: [
-      'app.scss'
-    ],
+    css: ["app.scss"],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
       // 'mdi-v5',
-      'fontawesome-v5',
+      "fontawesome-v5",
       // 'eva-icons',
       // 'themify',
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
-      'roboto-font', // optional, you are not bound to it
-      'material-icons', // optional, you are not bound to it
+      "roboto-font", // optional, you are not bound to it
+      "material-icons" // optional, you are not bound to it
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      iconSet: 'material-icons', // Quasar icon set
-      lang: 'en-us', // Quasar language pack
+      iconSet: "material-icons", // Quasar icon set
+      lang: "en-us", // Quasar language pack
 
       // Possible values for "all":
       // * 'auto' - Auto-import needed Quasar components & directives
@@ -55,15 +53,13 @@ module.exports = function (/* ctx */) {
       //            (fastest compile time; minimum bundle size; most tedious)
       // * true   - Import everything from Quasar
       //            (not treeshaking Quasar; biggest bundle size; convenient)
-      all: 'auto',
+      all: "auto",
 
       components: [],
       directives: [],
 
       // Quasar plugins
-      plugins: [
-        'LocalStorage',
-      ],
+      plugins: ["LocalStorage"],
 
       config: {
         dark: true, // or Boolean true/false
@@ -88,13 +84,14 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueRouterMode: "history", // available values: 'hash', 'history'
 
       // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
       // showProgress: false,
       // gzip: true,
       // analyze: true,
+      devtool: "source-map",
 
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
@@ -102,21 +99,23 @@ module.exports = function (/* ctx */) {
       // https://quasar.dev/quasar-cli/cli-documentation/handling-webpack
       extendWebpack(cfg) {
         cfg.module.rules.push({
-          enforce: 'pre',
+          enforce: "pre",
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
+          loader: "eslint-loader",
           exclude: /node_modules/,
           options: {
-            formatter: require('eslint').CLIEngine.getFormatter('stylish'),
+            formatter: require("eslint").CLIEngine.getFormatter("stylish")
           }
         });
 
-        cfg.plugins.push(new CopyWebpackPlugin([
-          { from: path.resolve(__dirname, 'src/_redirects', './') },
-          { from: path.resolve(__dirname, 'src/robots.txt', './') },
-          { from: path.resolve(__dirname, 'src/sitemap.xml', './') },
-        ]))
-      },
+        cfg.plugins.push(
+          new CopyWebpackPlugin([
+            { from: path.resolve(__dirname, "src/_redirects", "./") },
+            { from: path.resolve(__dirname, "src/robots.txt", "./") },
+            { from: path.resolve(__dirname, "src/sitemap.xml", "./") }
+          ])
+        );
+      }
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
@@ -137,31 +136,31 @@ module.exports = function (/* ctx */) {
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
-      workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
+      workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'covid-tracker',
-        short_name: 'covid-tracker',
-        description: 'Covid tracker',
-        display: 'standalone',
-        orientation: 'portrait',
-        background_color: '#ffffff',
-        theme_color: '#027be3',
+        name: "covid-tracker",
+        short_name: "covid-tracker",
+        description: "Covid tracker",
+        display: "standalone",
+        orientation: "portrait",
+        background_color: "#ffffff",
+        theme_color: "#027be3",
         icons: [
           {
-            src: 'statics/icons/icon-128x128.png',
-            sizes: '128x128',
-            type: 'image/png'
+            src: "statics/icons/icon-128x128.png",
+            sizes: "128x128",
+            type: "image/png"
           },
           {
-            src: 'statics/icons/icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
+            src: "statics/icons/icon-192x192.png",
+            sizes: "192x192",
+            type: "image/png"
           },
           {
-            src: 'statics/icons/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
+            src: "statics/icons/icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png"
           }
         ]
       }
@@ -170,7 +169,7 @@ module.exports = function (/* ctx */) {
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: 'org.cordova.quasar.app'
+      id: "org.cordova.quasar.app"
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
@@ -180,17 +179,15 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
     electron: {
-      bundler: 'packager', // 'packager' or 'builder'
+      bundler: "packager", // 'packager' or 'builder'
 
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
-
         // OS X / Mac App Store
         // appBundleId: '',
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
-
         // Windows only
         // win32metadata: { ... }
       },
@@ -198,7 +195,7 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'covid-tracker-front'
+        appId: "covid-tracker-front"
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
@@ -209,5 +206,5 @@ module.exports = function (/* ctx */) {
         // chainWebpack also available besides this extendWebpack
       }
     }
-  }
-}
+  };
+};

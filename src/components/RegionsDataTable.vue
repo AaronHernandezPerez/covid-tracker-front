@@ -220,12 +220,7 @@ export default {
           classes: "text-green-7",
           style: "font-size:18px",
           headerStyle: "font-size:20px",
-          format: (val, row) => {
-            if (!val) {
-              val = row.cases - row.active;
-            }
-            return this.formatOrUnknown(val);
-          }
+          format: val => this.formatOrUnknown(val)
         },
         {
           name: "tests",

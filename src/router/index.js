@@ -34,5 +34,24 @@ export default function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE
   })
 
+  const router = new VueRouter({
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes
+  })
+
+  router.beforeEach((to, from, next) => {
+    if (to.params.locale === from.params.locale) {
+      next()
+      return
+    }
+
+    const { locale } = to.params
+
+    // changeLanguage
+
+    next()
+  })
+
   return Router
 }

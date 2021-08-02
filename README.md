@@ -1,6 +1,15 @@
 # covid-tracker (covid-tracker-front)
 
-Covid tracker
+A simple Covid tracker
+
+<p align="center" >
+  <img src="docs/img1.PNG" alt="Table" />
+</p>
+
+<p align="center" >
+  <img src="docs/img2.PNG" alt="Country" />
+</p>
+
 
 ## Install the dependencies
 ```bash

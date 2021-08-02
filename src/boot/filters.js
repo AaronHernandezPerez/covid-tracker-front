@@ -20,7 +20,7 @@ Vue.filter('translateCountry2', function (value) {
 });
 
 Vue.filter('formatNumberDot', function (value) {
-  return parseInt(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return parseInt(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
 });
 
 Vue.filter('capitalize', function (value) {

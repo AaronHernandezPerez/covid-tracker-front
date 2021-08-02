@@ -16,10 +16,12 @@ export default {
   },
   name: "App",
   methods: {
-    ...mapActions("novelCOVID", ["fetchReport"])
+    ...mapActions("novelCOVID", ["fetchReport"]),
+    ...mapActions("covid19Api", { test: "fetchReport" })
   },
   created() {
     this.fetchReport();
+    this.test();
     if (this.$language != "en") {
       document.getElementsByName("description")[0].content = this.description;
     }

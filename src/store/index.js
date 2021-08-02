@@ -1,11 +1,12 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-import cov19cc from './cov19cc'
-import novelCOVID from './novelCOVID'
-import claps from './claps'
+import cov19cc from "./cov19cc";
+import novelCOVID from "./novelCOVID";
+import covid19Api from "./covid19Api";
+import claps from "./claps";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 /*
  * If not building with SSR mode, you can
@@ -16,18 +17,19 @@ Vue.use(Vuex)
  * with the Store instance.
  */
 
-export default function (/* { ssrContext } */) {
+export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       cov19cc,
       novelCOVID,
+      covid19Api,
       claps
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV
-  })
+  });
 
-  return Store
+  return Store;
 }

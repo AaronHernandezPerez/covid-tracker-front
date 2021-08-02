@@ -39,6 +39,7 @@
             <div
               class="text-h6 text-center full-width"
             >{{$t('recovered')}}: {{countryData.recovered | filterFunc(formatOrUnknown)}}</div>
+            {{countryData.recovered}}
           </q-badge>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg">
