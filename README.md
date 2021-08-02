@@ -1,6 +1,6 @@
 # covid-tracker (covid-tracker-front)
 
-A simple Covid tracker using Vue2, quasar, Vuex and i18mn
+A simple Covid tracker using Typescript, Vue, quasar, Vuex, Chartjs and i18n
 
 <p align="center" >
   <img src="docs/img1.PNG" alt="Table" />
